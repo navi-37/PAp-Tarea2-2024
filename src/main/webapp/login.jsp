@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Ayudemos.uy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 2rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        input {
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+        }
+        button {
+            background-color: black;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #525252;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Ayudemos.uy</h1>
+        <form action="/asd/Login" method="POST">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" required placeholder="••••••••">
+
+            <button type="submit">Ingresar</button>
+        </form>
+    </div>
+</body>
+</html>
