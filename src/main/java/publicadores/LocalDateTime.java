@@ -8,12 +8,7 @@
 package publicadores;
 
 public class LocalDateTime  implements java.io.Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	public LocalDateTime() {
+    public LocalDateTime() {
     }
 
     private java.lang.Object __equalsCalc = null;

@@ -69,4 +69,14 @@
     <servlet-name>VerDistribucionesRepartidor</servlet-name>
     <url-pattern>/VerDistribucionesRepartidor</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VerDistribucionesBeneficiario</display-name>
+    <servlet-name>VerDistribucionesBeneficiario</servlet-name>
+    <servlet-class>servlets.VerDistribucionesBeneficiario</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerDistribucionesBeneficiario</servlet-name>
+    <url-pattern>/VerDistribucionesBeneficiario</url-pattern>
+  </servlet-mapping>
 </web-app>

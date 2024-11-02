@@ -46,7 +46,7 @@
 </head>
 <body>
     <header class="custom-header text-white p-4 position-relative d-flex justify-content-between align-items-center">
-        <a href="repartidor.jsp" class="btn btn-outline-light">
+        <a href="beneficiario.jsp" class="btn btn-outline-light">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         </a>
         <h1 class="text-center m-0 flex-grow-1">Ayudemos</h1>
@@ -57,7 +57,7 @@
                 <span><%= session.getAttribute("useremail") %></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                <li><a class="dropdown-item" href="/asd/VerPerfilRepartidor">Ver perfil</a></li>
+                <li><a class="dropdown-item" href="/asd/VerPerfilBeneficiario">Ver perfil</a></li>
                 <li><a class="dropdown-item" href="#">Modificar datos</a></li>
 				<li><a class="dropdown-item" href="/asd/Logout">Cerrar sesión</a></li>
             </ul>
@@ -66,7 +66,7 @@
 
     <main class="container mt-4">
         <div class="profile-section">
-            <h2 class="mb-4">Distribuciones pendientes:</h2>
+            <h2 class="mb-4">Distribuciones asociadas a <%= session.getAttribute("useremail") %>:</h2>
             <div id="profileData">
                 <!-- Mostrar los datos del perfil del beneficiario -->
                 
@@ -74,11 +74,12 @@
                    	ArrayList<DtDistribucion> distribuciones = (ArrayList<DtDistribucion>) request.getAttribute("distribuciones");
                 	ArrayList<String> descripciones = (ArrayList<String>) request.getAttribute("descripciones");
                 	int i = 0;
-                   	for (DtDistribucion d : distribuciones){	
+                   	for (DtDistribucion d : distribuciones){
+                   			//if(d.getBeneficiario().getEmail().equals(session.getAttribute("useremail"))) {
                  	%>
                  	<div class="distribucion-item">
                  	<div class="profile-field">
-                    <div class="profile-label">Id:</div>
+                    <div class="profile-label">Id de distribución:</div>
                     <div>
                     <% 
                     	out.print(d.getId());
@@ -109,24 +110,6 @@
 			        %></div>
         		</div>
         		<div class="profile-field">
-                    <div class="profile-label">Email del beneficiario asociado:</div>
-                    <div><% 
-                    	out.print(d.getBeneficiario().getEmail());
-			        %></div>
-        		</div>
-        		<div class="profile-field">
-                    <div class="profile-label">Nombre del beneficiario:</div>
-                    <div><% 
-                    	out.print(d.getBeneficiario().getNombre());
-			        %></div>
-        		</div>
-        		<div class="profile-field">
-                    <div class="profile-label">Barrio del beneficiario:</div>
-                    <div><% 
-                    	out.print(d.getBeneficiario().getBarrio());
-			        %></div>
-        		</div>
-        		<div class="profile-field">
                     <div class="profile-label">Id de donación asociada:</div>
                     <div><% 
 	                    out.print(d.getDonacion().getId()); 
@@ -140,8 +123,10 @@
 			        %></div>
 			        </div>
 			        </div>
-			    <% } %>
-        		
+			    <% 
+					//}
+			    } 
+			    	%>
         	</div>
         	
         </div>

@@ -19,15 +19,14 @@ import java.util.ArrayList;
 
 import javax.xml.rpc.ServiceException;
 
-public class VerDistribucionesRepartidor extends HttpServlet {
+public class VerDistribucionesBeneficiario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public VerDistribucionesRepartidor() {
+    public VerDistribucionesBeneficiario() {
         super();    
     }
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //String email = (String) request.getSession().getAttribute("useremail");
         ControladorPublishService cps = new ControladorPublishServiceLocator();
         ControladorPublish port = null;
 
@@ -37,44 +36,48 @@ public class VerDistribucionesRepartidor extends HttpServlet {
                 throw new RuntimeException("No se pudo obtener el puerto del controlador Publish.");
             }
 
-            int[] idDistribuciones = port.listarLasDistribucionesFiltradas(EstadoDistribucion.PENDIENTE, null);
+            int[] idDistribuciones = port.listarLasDistribucionesFiltradas(null, null);
             ArrayList<DtDistribucion> distribuciones = new ArrayList<DtDistribucion>();
             ArrayList<String> descripciones = new ArrayList<String>();
+            
             for (int dist : idDistribuciones) {
             	DtDistribucion distribucion = port.getDistribucion(dist);
-            	distribuciones.add(distribucion);
             	
-            	Integer idDon = distribucion.getDonacion().getId();
-            	
-                DtArticulo articulo = null;
-                DtAlimento alimento = null;
-                
-                try {
-                	alimento = port.getAlimento(idDon);
-				} catch (Exception e) {
-				    alimento = null;
-				}
-                try {
-                	articulo = port.getArticulo(idDon);
+            	if(distribucion.getBeneficiario().getEmail().equals(request.getSession().getAttribute("useremail"))) {
+            		distribuciones.add(distribucion);
 
-				} catch (Exception e) {
-				    articulo = null; 
-				}
- 
-            	if (alimento != null) { // si es un alimento
-            		String descripcion = alimento.getDescripcionProductos();
-            		descripciones.add(descripcion);
-            	} else if (articulo != null) { // si es un artículo
-            		String descripcion = articulo.getDescripcion();
-            		descripciones.add(descripcion);
-            	} else {
-            		descripciones.add("Descripción no disponible");
+                	Integer idDon = distribucion.getDonacion().getId();
+                	
+                    DtArticulo articulo = null;
+                    DtAlimento alimento = null;
+                    
+                    try {
+                    	alimento = port.getAlimento(idDon);
+    				} catch (Exception e) {
+    				    alimento = null;
+    				}
+                    try {
+                    	articulo = port.getArticulo(idDon);
+
+    				} catch (Exception e) {
+    				    articulo = null; 
+    				}
+     
+                	if (alimento != null) { // si es un alimento
+                		String descripcion = alimento.getDescripcionProductos();
+                		descripciones.add(descripcion);
+                	} else if (articulo != null) { // si es un artículo
+                		String descripcion = articulo.getDescripcion();
+                		descripciones.add(descripcion);
+                	} else {
+                		descripciones.add("Descripción no disponible");
+                	}
             	}
             }
-            
+             
             request.setAttribute("distribuciones", distribuciones);
             request.setAttribute("descripciones", descripciones);
-            request.getRequestDispatcher("/ver-distribuciones-repartidor.jsp").forward(request, response);
+            request.getRequestDispatcher("/ver-distribuciones-beneficiario.jsp").forward(request, response);
         
         } catch (Exception e) {
             e.printStackTrace(); // Imprimir la traza de la excepción en la consola para depuración
