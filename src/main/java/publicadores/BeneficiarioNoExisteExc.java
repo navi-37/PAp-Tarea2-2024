@@ -121,6 +121,10 @@ public class BeneficiarioNoExisteExc  extends org.apache.axis.AxisFault  impleme
      * Writes the exception data to the faultDetails
      */
     public void writeDetails(javax.xml.namespace.QName qname, org.apache.axis.encoding.SerializationContext context) throws java.io.IOException {
+<<<<<<< HEAD
         context.serialize(qname, null, this);
+=======
+        //context.serialize(qname, null, this);
+>>>>>>> c7ff48a22d92f03c4bf050040aba433a8e5308da
     }
 }
