@@ -22,11 +22,7 @@ public class ControladorPublishServiceLocator extends org.apache.axis.client.Ser
     }
 
     // Use to get a proxy class for ControladorPublishPort
-<<<<<<< HEAD
     private java.lang.String ControladorPublishPort_address = "http://localhost:8083/controlador";
-=======
-    private java.lang.String ControladorPublishPort_address = "http://127.0.0.1:8083/controlador";
->>>>>>> c7ff48a22d92f03c4bf050040aba433a8e5308da
 
     public java.lang.String getControladorPublishPortAddress() {
         return ControladorPublishPort_address;

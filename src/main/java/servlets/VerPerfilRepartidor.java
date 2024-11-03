@@ -12,7 +12,7 @@ import publicadores.DtRepartidor;
 import java.io.IOException;
 import javax.xml.rpc.ServiceException;
 
-@WebServlet("/VerPerfilRepartidor")
+//@WebServlet("/VerPerfilRepartidor")
 public class VerPerfilRepartidor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

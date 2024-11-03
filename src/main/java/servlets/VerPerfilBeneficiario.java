@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 
 import javax.xml.rpc.ServiceException;
 
-@WebServlet("/VerPerfilBeneficiario")
+//@WebServlet("/VerPerfilBeneficiario")
 public class VerPerfilBeneficiario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

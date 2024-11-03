@@ -21,7 +21,7 @@ import java.io.PrintWriter;
 
 import javax.xml.rpc.ServiceException;
 
-@WebServlet("/Login")
+//@WebServlet("/Login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

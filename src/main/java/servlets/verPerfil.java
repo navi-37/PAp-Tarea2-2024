@@ -22,7 +22,7 @@ import javax.xml.rpc.ServiceException;
  * Servlet implementation class verPerfil
  */
 
-@WebServlet("/verPerfil")
+//@WebServlet("/verPerfil")
 public class verPerfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

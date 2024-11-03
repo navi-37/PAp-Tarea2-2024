@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 import javax.xml.rpc.ServiceException;
 
-@WebServlet("/VerDistribucionesBeneficiario")
+//@WebServlet("/VerDistribucionesBeneficiario")
 public class VerDistribucionesBeneficiario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

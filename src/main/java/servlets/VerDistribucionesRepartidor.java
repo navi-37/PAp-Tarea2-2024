@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import javax.xml.rpc.ServiceException;
 
 
-@WebServlet("/VerDistribucionesRepartidor")
+//@WebServlet("/VerDistribucionesRepartidor")
 public class VerDistribucionesRepartidor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

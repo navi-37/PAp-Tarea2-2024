@@ -8,36 +8,21 @@
 package publicadores;
 
 public interface ControladorPublish extends java.rmi.Remote {
-<<<<<<< HEAD
-    public int[] listarLasDistribucionesFiltradas(publicadores.EstadoDistribucion arg0, publicadores.Barrio arg1) throws java.rmi.RemoteException;
-    public publicadores.DtDonacion getDonacion(int arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc;
-    public publicadores.DtDistribucion getDistribucion(int arg0) throws java.rmi.RemoteException;
-    public void altaDistribucion(publicadores.DtDistribucion arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc, publicadores.UsuarioNOBeneficiarioExc, publicadores.DistribucionRepetidaExc;
-    public publicadores.DtBeneficiario getBeneficiario(java.lang.String arg0) throws java.rmi.RemoteException, publicadores.BeneficiarioNoExisteExc;
-    public void altaUsuario(publicadores.DtUsuario arg0) throws java.rmi.RemoteException, publicadores.UsuarioRepetidoExc;
     public void altaDonacion(publicadores.DtDonacion arg0) throws java.rmi.RemoteException, publicadores.DonacionRepetidaExc;
-    public void modificarDistribucion(publicadores.DtDistribucion arg0) throws java.rmi.RemoteException, publicadores.DistribucionNoEncontradaExc;
-    public publicadores.DtReporte[] reporte(java.util.Calendar arg0, java.util.Calendar arg1) throws java.rmi.RemoteException;
-    public int[] listarDonaciones() throws java.rmi.RemoteException;
-    public void modificarDonacion(publicadores.DtDonacion arg0) throws java.rmi.RemoteException;
-    public publicadores.DtBeneficiario[] listaBeneficiarios() throws java.rmi.RemoteException;
-=======
-    public publicadores.DtReporte[] reporte(java.util.Calendar arg0, java.util.Calendar arg1) throws java.rmi.RemoteException;
-    public void modificarDonacion(publicadores.DtDonacion arg0) throws java.rmi.RemoteException;
-    public publicadores.DtDistribucion getDistribucion(int arg0) throws java.rmi.RemoteException;
-    public publicadores.DtBeneficiario[] listaBeneficiarios() throws java.rmi.RemoteException;
-    public int[] listarDonaciones() throws java.rmi.RemoteException;
-    public void altaDonacion(publicadores.DtDonacion arg0) throws java.rmi.RemoteException, publicadores.DonacionRepetidaExc;
-    public publicadores.DtDonacion getDonacion(int arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc;
     public void altaUsuario(publicadores.DtUsuario arg0) throws java.rmi.RemoteException, publicadores.UsuarioRepetidoExc;
-    public publicadores.DtBeneficiario getBeneficiario(java.lang.String arg0) throws java.rmi.RemoteException, publicadores.BeneficiarioNoExisteExc;
-    public void altaDistribucion(publicadores.DtDistribucion arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc, publicadores.UsuarioNOBeneficiarioExc, publicadores.DistribucionRepetidaExc;
+    public publicadores.DtReporte[] reporte(java.util.Calendar arg0, java.util.Calendar arg1) throws java.rmi.RemoteException;
     public void modificarDistribucion(publicadores.DtDistribucion arg0) throws java.rmi.RemoteException, publicadores.DistribucionNoEncontradaExc;
     public int[] listarLasDistribucionesFiltradas(publicadores.EstadoDistribucion arg0, publicadores.Barrio arg1) throws java.rmi.RemoteException;
->>>>>>> c7ff48a22d92f03c4bf050040aba433a8e5308da
-    public publicadores.DtRepartidor[] listaRepartidores() throws java.rmi.RemoteException;
+    public int[] listarDonaciones() throws java.rmi.RemoteException;
+    public publicadores.DtBeneficiario getBeneficiario(java.lang.String arg0) throws java.rmi.RemoteException, publicadores.BeneficiarioNoExisteExc;
+    public void altaDistribucion(publicadores.DtDistribucion arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc, publicadores.UsuarioNOBeneficiarioExc, publicadores.DistribucionRepetidaExc;
+    public publicadores.DtDistribucion getDistribucion(int arg0) throws java.rmi.RemoteException;
+    public publicadores.DtBeneficiario[] listaBeneficiarios() throws java.rmi.RemoteException;
+    public publicadores.DtDonacion getDonacion(int arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc;
+    public void modificarDonacion(publicadores.DtDonacion arg0) throws java.rmi.RemoteException;
     public publicadores.DtRepartidor getRepartidor(java.lang.String arg0) throws java.rmi.RemoteException, publicadores.RepartidorNoExisteExc;
     public void modificarUsuario(publicadores.DtUsrModificar arg0, java.lang.String arg1, java.lang.String arg2, publicadores.EstadoBeneficiario arg3, java.lang.String arg4, publicadores.LocalDateTime arg5, publicadores.Barrio arg6, java.lang.String arg7, java.lang.String arg8) throws java.rmi.RemoteException;
+    public publicadores.DtRepartidor[] listaRepartidores() throws java.rmi.RemoteException;
     public publicadores.DtArticulo getArticulo(int arg0) throws java.rmi.RemoteException;
     public publicadores.DtAlimento getAlimento(int arg0) throws java.rmi.RemoteException;
     public publicadores.DtBeneficiario[] listarBeneficiariosPorEstadoYBarrio(publicadores.EstadoBeneficiario arg0, publicadores.Barrio arg1) throws java.rmi.RemoteException;
