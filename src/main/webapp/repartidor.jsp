@@ -76,7 +76,7 @@
             <nav>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="/asd/VerDistribucionesRepartidor" class="nav-link custom-menu-link">Ver distribuciones</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link custom-menu-link">Cambiar estado de distribución</a></li>
+                    <li class="nav-item"><a href="/asd/CambiarEstadoDistribucion" class="nav-link custom-menu-link">Cambiar estado de distribución</a></li>
 					<li class="nav-item"><a href="#" class="nav-link custom-menu-link">Filtrar distribuciones por zona</a></li>
                 </ul>
             </nav>

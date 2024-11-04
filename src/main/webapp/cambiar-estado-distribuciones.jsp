@@ -3,6 +3,7 @@
 <%@page import="publicadores.DtDonacion"%>
 <%@page import="publicadores.DtAlimento"%>
 <%@page import="publicadores.DtDistribucion"%>
+<%@page import="publicadores.EstadoDistribucion"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.text.SimpleDateFormat" %>
@@ -66,7 +67,7 @@
 
     <main class="container mt-4">
         <div class="profile-section">
-            <h2 class="mb-4">Distribuciones pendientes:</h2>
+            <h2 class="mb-4">Distribuciones:</h2>
             <div id="profileData">
                 <!-- Mostrar los datos del perfil del beneficiario -->
                 
@@ -78,51 +79,54 @@
                  	%>
                  	<div class="distribucion-item">
                  	<div class="profile-field">
-                    <div class="profile-label">Id:</div>
-                    <div>
-                    <% 
-                    	out.print(d.getId());
-			        %></div>
+                 	<p class="card-text"><strong>Id:</strong> <% out.print(d.getId());//out.print("69");  %></p>
                 	</div>
+                	
                 <div class="profile-field">
-                    <div class="profile-label">Fecha de preparación:</div>
-                    <div><%
+                 <div><%
 	                    Calendar fechaPreparacion = d.getFechaPreparacion();
 	                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	                    String fechaFormateada = sdf.format(fechaPreparacion.getTime());
-	                    out.print(fechaFormateada);
+	                    //out.print(fechaFormateada);
 			        %></div>
+                <p class="card-text"><strong>Fecha de preparación:</strong> <% out.print(fechaFormateada); //out.print("dd/MM/yyyy"); // %></p>
                 </div>
 
-            	
         		<div class="profile-field">
-                    <div class="profile-label">Email del beneficiario asociado:</div>
-                    <div><% 
-                    	out.print(d.getBeneficiario().getEmail());
-			        %></div>
+        		<p class="card-text"><strong>Email del beneficiario asociado:</strong> <% out.print(d.getBeneficiario().getEmail()); //out.print("beneficiario@mail.com"); // %></p>
         		</div>
 
         		<div class="profile-field">
-                    <div class="profile-label">Id de donación asociada:</div>
-                    <div><% 
-	                    out.print(d.getDonacion().getId()); 
-			        %></div>
+        		<p class="card-text"><strong>Id de donación asociada:</strong> <% out.print(d.getDonacion().getId()); //out.print("96"); // %></p>
 			        </div>
+			        
 			    <div class="profile-field">
-                    <div class="profile-label">Descripción de la donación:</div>
+			    <p class="card-text"><strong>Descripción de la donación:</strong> <% out.print(descripciones.get(i)); //out.print("Arroz"); // %></p>
                     <div><% 
-	                    out.print(descripciones.get(i));
                     	i++;
 			        %></div>
 			        </div>
 			    <div class="profile-field">
-                    <div class="profile-label">Estado:</div>
-                    <div><% 
-                    	out.print(d.getEstado());
-			        %></div>
+			    <p class="card-text"><strong>Estado:</strong> <% out.print(d.getEstado()); //out.print("PENDIENTE"); // %></p>
         		</div>
+        		<% 
+        		if (d.getEstado() != EstadoDistribucion.ENTREGADO){
+        		
+	        		//int distribucionId = 69;
+				    int distribucionId = d.getId();
+				    out.print(distribucionId);
+				%>
+
+		
+				    <form action="/asd/ContinuarCambiarEstadoDistribucion" method="post">
+				        <input type="hidden" name="distribucionId" value="<%= distribucionId %>">
+				        <button type="submit" class="btn btn-secondary">Cambiar Estado</button>
+				    </form>
+				<% } %>
+
 			        </div>
 			    <% } %>
+			    
         		
         	</div>
         	

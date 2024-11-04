@@ -1,3 +1,45 @@
+//package servlets;
+//
+//import jakarta.servlet.ServletException;
+//import jakarta.servlet.annotation.WebServlet;
+//import jakarta.servlet.http.HttpServlet;
+//import jakarta.servlet.http.HttpServletRequest;
+//import jakarta.servlet.http.HttpServletResponse;
+//import java.io.IOException;
+//
+///**
+// * Servlet implementation class CambiarEstadoDistribucion
+// */
+////@WebServlet("/CambiarEstadoDistribucion")
+//public class CambiarEstadoDistribucion extends HttpServlet {
+//	private static final long serialVersionUID = 1L;
+//       
+//    /**
+//     * @see HttpServlet#HttpServlet()
+//     */
+//    public CambiarEstadoDistribucion() {
+//        super();
+//        // TODO Auto-generated constructor stub
+//    }
+//
+//	/**
+//	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+//	 */
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+//	}
+//
+//	/**
+//	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+//	 */
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		doGet(request, response);
+//	}
+//
+//}
+
 package servlets;
 
 import jakarta.servlet.ServletException;
@@ -5,37 +47,92 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import publicadores.ControladorPublish;
+import publicadores.ControladorPublishService;
+import publicadores.ControladorPublishServiceLocator;
+import publicadores.DtAlimento;
+import publicadores.DtArticulo;
+import publicadores.DtBeneficiario;
+import publicadores.DtDistribucion;
+import publicadores.DtDonacion;
+import publicadores.EstadoDistribucion;
 
-/**
- * Servlet implementation class CambiarEstadoDistribucion
- */
-//@WebServlet("/CambiarEstadoDistribucion")
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.xml.rpc.ServiceException;
+
+
+@WebServlet("/CambiarEstadoDistribucion")
 public class CambiarEstadoDistribucion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public CambiarEstadoDistribucion() {
-        super();
-        // TODO Auto-generated constructor stub
+        super();    
     }
+   
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //String email = (String) request.getSession().getAttribute("useremail");
+        ControladorPublishService cps = new ControladorPublishServiceLocator();
+        ControladorPublish port = null;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+        try {
+            port = cps.getControladorPublishPort();
+            if (port == null) {
+                throw new RuntimeException("No se pudo obtener el puerto del controlador Publish.");
+            }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+            int[] idDistribuciones = port.listarLasDistribucionesFiltradas(null, null);
+            ArrayList<DtDistribucion> distribuciones = new ArrayList<DtDistribucion>();
+            ArrayList<String> descripciones = new ArrayList<String>();
+            for (int dist : idDistribuciones) {
+            	DtDistribucion distribucion = port.getDistribucion(dist);
+            	distribuciones.add(distribucion);
+            	
+            	Integer idDon = distribucion.getDonacion().getId();
+            	
+                DtArticulo articulo = null;
+                DtAlimento alimento = null;
+                
+                try {
+                	alimento = port.getAlimento(idDon);
+				} catch (Exception e) {
+				    alimento = null;
+				}
+                try {
+                	articulo = port.getArticulo(idDon);
 
+				} catch (Exception e) {
+				    articulo = null; 
+				}
+ 
+            	if (alimento != null) { // si es un alimento
+            		String descripcion = alimento.getDescripcionProductos();
+            		descripciones.add(descripcion);
+            	} else if (articulo != null) { // si es un artículo
+            		String descripcion = articulo.getDescripcion();
+            		descripciones.add(descripcion);
+            	} else {
+            		descripciones.add("Descripción no disponible");
+            	}
+            }
+            
+            request.setAttribute("distribuciones", distribuciones);
+            request.setAttribute("descripciones", descripciones);
+            request.getRequestDispatcher("/cambiar-estado-distribuciones.jsp").forward(request, response);
+        
+        } catch (Exception e) {
+            e.printStackTrace(); // Imprimir la traza de la excepción en la consola para depuración
+            request.setAttribute("errorMessage", e.getMessage()); // Pasar mensaje de error a la JSP
+            request.getRequestDispatcher("/error.jsp").forward(request, response); // Redirigir a una página de error
+        }
+        
+    }
+	 
+    public publicadores.DtDistribucion getDistribucion(int arg0) throws java.rmi.RemoteException, ServiceException {
+		ControladorPublishService cps = new ControladorPublishServiceLocator();
+		ControladorPublish port;
+		port = cps.getControladorPublishPort();
+		return (DtDistribucion) port.getDistribucion(arg0);
+	} 
 }
