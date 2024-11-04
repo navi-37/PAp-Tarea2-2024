@@ -10,14 +10,14 @@ package publicadores;
 public class DtDonacion  implements java.io.Serializable {
     private java.lang.Integer id;
 
-    private publicadores.LocalDateTime fechaIngresada;
+    private java.util.Calendar fechaIngresada;
 
     public DtDonacion() {
     }
 
     public DtDonacion(
            java.lang.Integer id,
-           publicadores.LocalDateTime fechaIngresada) {
+           java.util.Calendar fechaIngresada) {
            this.id = id;
            this.fechaIngresada = fechaIngresada;
     }
@@ -48,7 +48,7 @@ public class DtDonacion  implements java.io.Serializable {
      * 
      * @return fechaIngresada
      */
-    public publicadores.LocalDateTime getFechaIngresada() {
+    public java.util.Calendar getFechaIngresada() {
         return fechaIngresada;
     }
 
@@ -58,7 +58,7 @@ public class DtDonacion  implements java.io.Serializable {
      * 
      * @param fechaIngresada
      */
-    public void setFechaIngresada(publicadores.LocalDateTime fechaIngresada) {
+    public void setFechaIngresada(java.util.Calendar fechaIngresada) {
         this.fechaIngresada = fechaIngresada;
     }
 
@@ -116,7 +116,7 @@ public class DtDonacion  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("fechaIngresada");
         elemField.setXmlName(new javax.xml.namespace.QName("", "fechaIngresada"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "localDateTime"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

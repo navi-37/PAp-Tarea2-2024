@@ -12,6 +12,7 @@ import publicadores.DtDistribucion;
 import publicadores.EstadoDistribucion;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.Date;
 
 import javax.xml.rpc.ServiceException;
@@ -25,7 +26,6 @@ public class ContinuarCambiarEstadoDistribucion extends HttpServlet {
 		//doGet(request, response);
 		
 		String idDistString = request.getParameter("distribucionId");
-		System.out.print(idDistString);
 		try {
 		    int idDist = Integer.parseInt(idDistString);
 		    
@@ -35,9 +35,6 @@ public class ContinuarCambiarEstadoDistribucion extends HttpServlet {
             
             DtDistribucion distribucionActualizar = port.getDistribucion(idDist);
             EstadoDistribucion estadoActual = distribucionActualizar.getEstado();
-            
-            System.out.print(distribucionActualizar.getBeneficiario().getEmail());
-            System.out.print(distribucionActualizar.getFechaPreparacion());
             
             EstadoDistribucion nuevoEstado = estadoActual;
             System.out.print(nuevoEstado);
@@ -79,7 +76,12 @@ public class ContinuarCambiarEstadoDistribucion extends HttpServlet {
     public void modificarDistribucion(publicadores.DtDistribucion dtd) throws java.rmi.RemoteException, publicadores.DistribucionNoEncontradaExc, ServiceException {   
 		ControladorPublishService cps = new ControladorPublishServiceLocator();
 		ControladorPublish port = cps.getControladorPublishPort();;
-		port.modificarDistribucion(dtd);
+		try {
+			port.modificarDistribucion(dtd);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

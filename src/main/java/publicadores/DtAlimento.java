@@ -17,7 +17,7 @@ public class DtAlimento  extends publicadores.DtDonacion  implements java.io.Ser
 
     public DtAlimento(
            java.lang.Integer id,
-           publicadores.LocalDateTime fechaIngresada,
+           java.util.Calendar fechaIngresada,
            java.lang.String descripcionProductos,
            java.lang.Integer cantElementos) {
         super(

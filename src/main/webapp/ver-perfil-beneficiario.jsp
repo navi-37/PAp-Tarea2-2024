@@ -2,8 +2,9 @@
 <%@page import="publicadores.DtRepartidor"%>
 <%@page import="publicadores.DtDonacion"%>
 <%@page import="publicadores.DtAlimento"%>
-<%@ page import="java.time.LocalDateTime" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -93,7 +94,10 @@
         		<div class="profile-field">
                     <div class="profile-label">Fecha de nacimiento:</div>
                     <div><% 
-	                    out.print(beneficiario.getFechaNacimiento()); 
+	                    Calendar fechaPreparacion = beneficiario.getFechaNacimiento();
+	                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	                    String fechaFormateada = sdf.format(fechaPreparacion.getTime());
+	                    out.print(fechaFormateada);
 			        %></div>
         		</div>
         	</div>

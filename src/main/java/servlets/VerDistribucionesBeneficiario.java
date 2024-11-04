@@ -17,6 +17,7 @@ import publicadores.EstadoDistribucion;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.xml.rpc.ServiceException;
 
@@ -39,6 +40,7 @@ public class VerDistribucionesBeneficiario extends HttpServlet {
             }
 
             int[] idDistribuciones = port.listarLasDistribucionesFiltradas(null, null);
+            Arrays.sort(idDistribuciones);
             ArrayList<DtDistribucion> distribuciones = new ArrayList<DtDistribucion>();
             ArrayList<String> descripciones = new ArrayList<String>();
             

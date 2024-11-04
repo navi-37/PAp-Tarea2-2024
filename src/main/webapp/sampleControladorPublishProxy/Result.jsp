@@ -63,91 +63,243 @@ if(getControladorPublish10mtemp == null){
 break;
 case 13:
         gotMethod = true;
-        String arg0_1id=  request.getParameter("arg016");
-            java.util.Calendar arg0_1idTemp = null;
-        if(!arg0_1id.equals("")){
-        java.text.DateFormat dateFormatarg016 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTemparg016  = dateFormatarg016.parse(arg0_1id);
-         arg0_1idTemp = new java.util.GregorianCalendar();
-        arg0_1idTemp.setTime(dateTemparg016);
+        String fechaIngresada_2id=  request.getParameter("fechaIngresada18");
+            java.util.Calendar fechaIngresada_2idTemp = null;
+        if(!fechaIngresada_2id.equals("")){
+        java.text.DateFormat dateFormatfechaIngresada18 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaIngresada18  = dateFormatfechaIngresada18.parse(fechaIngresada_2id);
+         fechaIngresada_2idTemp = new java.util.GregorianCalendar();
+        fechaIngresada_2idTemp.setTime(dateTempfechaIngresada18);
         }
-        String arg1_2id=  request.getParameter("arg118");
-            java.util.Calendar arg1_2idTemp = null;
-        if(!arg1_2id.equals("")){
-        java.text.DateFormat dateFormatarg118 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTemparg118  = dateFormatarg118.parse(arg1_2id);
-         arg1_2idTemp = new java.util.GregorianCalendar();
-        arg1_2idTemp.setTime(dateTemparg118);
-        }
-        publicadores.DtReporte[] reporte13mtemp = sampleControladorPublishProxyid.reporte(arg0_1idTemp,arg1_2idTemp);
-if(reporte13mtemp == null){
-%>
-<%=reporte13mtemp %>
-<%
-}else{
-        String tempreturnp14 = null;
-        if(reporte13mtemp != null){
-        java.util.List listreturnp14= java.util.Arrays.asList(reporte13mtemp);
-        tempreturnp14 = listreturnp14.toString();
+        String id_3id=  request.getParameter("id20");
+            java.lang.Integer id_3idTemp = null;
+        if(!id_3id.equals("")){
+         id_3idTemp  = java.lang.Integer.valueOf(id_3id);
         }
         %>
-        <%=tempreturnp14%>
+        <jsp:useBean id="publicadores1DtDonacion_1id" scope="session" class="publicadores.DtDonacion" />
+        <%
+        publicadores1DtDonacion_1id.setFechaIngresada(fechaIngresada_2idTemp);
+        publicadores1DtDonacion_1id.setId(id_3idTemp);
+        sampleControladorPublishProxyid.altaDonacion(publicadores1DtDonacion_1id);
+break;
+case 22:
+        gotMethod = true;
+        String email_5id=  request.getParameter("email27");
+            java.lang.String email_5idTemp = null;
+        if(!email_5id.equals("")){
+         email_5idTemp  = email_5id;
+        }
+        String pw_6id=  request.getParameter("pw29");
+            java.lang.String pw_6idTemp = null;
+        if(!pw_6id.equals("")){
+         pw_6idTemp  = pw_6id;
+        }
+        String nombre_7id=  request.getParameter("nombre31");
+            java.lang.String nombre_7idTemp = null;
+        if(!nombre_7id.equals("")){
+         nombre_7idTemp  = nombre_7id;
+        }
+        %>
+        <jsp:useBean id="publicadores1DtUsuario_4id" scope="session" class="publicadores.DtUsuario" />
+        <%
+        publicadores1DtUsuario_4id.setEmail(email_5idTemp);
+        publicadores1DtUsuario_4id.setPw(pw_6idTemp);
+        publicadores1DtUsuario_4id.setNombre(nombre_7idTemp);
+        sampleControladorPublishProxyid.altaUsuario(publicadores1DtUsuario_4id);
+break;
+case 33:
+        gotMethod = true;
+        String fechaNacimiento_10id=  request.getParameter("fechaNacimiento40");
+            java.util.Calendar fechaNacimiento_10idTemp = null;
+        if(!fechaNacimiento_10id.equals("")){
+        java.text.DateFormat dateFormatfechaNacimiento40 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaNacimiento40  = dateFormatfechaNacimiento40.parse(fechaNacimiento_10id);
+         fechaNacimiento_10idTemp = new java.util.GregorianCalendar();
+        fechaNacimiento_10idTemp.setTime(dateTempfechaNacimiento40);
+        }
+        String direccion_11id=  request.getParameter("direccion42");
+            java.lang.String direccion_11idTemp = null;
+        if(!direccion_11id.equals("")){
+         direccion_11idTemp  = direccion_11id;
+        }
+        %>
+        <jsp:useBean id="publicadores1DtBeneficiario_9id" scope="session" class="publicadores.DtBeneficiario" />
+        <%
+        publicadores1DtBeneficiario_9id.setFechaNacimiento(fechaNacimiento_10idTemp);
+        publicadores1DtBeneficiario_9id.setDireccion(direccion_11idTemp);
+        String fechaIngresada_13id=  request.getParameter("fechaIngresada46");
+            java.util.Calendar fechaIngresada_13idTemp = null;
+        if(!fechaIngresada_13id.equals("")){
+        java.text.DateFormat dateFormatfechaIngresada46 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaIngresada46  = dateFormatfechaIngresada46.parse(fechaIngresada_13id);
+         fechaIngresada_13idTemp = new java.util.GregorianCalendar();
+        fechaIngresada_13idTemp.setTime(dateTempfechaIngresada46);
+        }
+        String id_14id=  request.getParameter("id48");
+            java.lang.Integer id_14idTemp = null;
+        if(!id_14id.equals("")){
+         id_14idTemp  = java.lang.Integer.valueOf(id_14id);
+        }
+        %>
+        <jsp:useBean id="publicadores1DtDonacion_12id" scope="session" class="publicadores.DtDonacion" />
+        <%
+        publicadores1DtDonacion_12id.setFechaIngresada(fechaIngresada_13idTemp);
+        publicadores1DtDonacion_12id.setId(id_14idTemp);
+        String fechaPreparacion_15id=  request.getParameter("fechaPreparacion50");
+            java.util.Calendar fechaPreparacion_15idTemp = null;
+        if(!fechaPreparacion_15id.equals("")){
+        java.text.DateFormat dateFormatfechaPreparacion50 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaPreparacion50  = dateFormatfechaPreparacion50.parse(fechaPreparacion_15id);
+         fechaPreparacion_15idTemp = new java.util.GregorianCalendar();
+        fechaPreparacion_15idTemp.setTime(dateTempfechaPreparacion50);
+        }
+        String fechaEntrega_16id=  request.getParameter("fechaEntrega52");
+            java.util.Calendar fechaEntrega_16idTemp = null;
+        if(!fechaEntrega_16id.equals("")){
+        java.text.DateFormat dateFormatfechaEntrega52 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaEntrega52  = dateFormatfechaEntrega52.parse(fechaEntrega_16id);
+         fechaEntrega_16idTemp = new java.util.GregorianCalendar();
+        fechaEntrega_16idTemp.setTime(dateTempfechaEntrega52);
+        }
+        String id_17id=  request.getParameter("id54");
+        int id_17idTemp  = Integer.parseInt(id_17id);
+        %>
+        <jsp:useBean id="publicadores1DtDistribucion_8id" scope="session" class="publicadores.DtDistribucion" />
+        <%
+        publicadores1DtDistribucion_8id.setBeneficiario(publicadores1DtBeneficiario_9id);
+        publicadores1DtDistribucion_8id.setDonacion(publicadores1DtDonacion_12id);
+        publicadores1DtDistribucion_8id.setFechaPreparacion(fechaPreparacion_15idTemp);
+        publicadores1DtDistribucion_8id.setFechaEntrega(fechaEntrega_16idTemp);
+        publicadores1DtDistribucion_8id.setId(id_17idTemp);
+        sampleControladorPublishProxyid.modificarDistribucion(publicadores1DtDistribucion_8id);
+break;
+case 56:
+        gotMethod = true;
+        String arg0_18id=  request.getParameter("arg059");
+            java.util.Calendar arg0_18idTemp = null;
+        if(!arg0_18id.equals("")){
+        java.text.DateFormat dateFormatarg059 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTemparg059  = dateFormatarg059.parse(arg0_18id);
+         arg0_18idTemp = new java.util.GregorianCalendar();
+        arg0_18idTemp.setTime(dateTemparg059);
+        }
+        String arg1_19id=  request.getParameter("arg161");
+            java.util.Calendar arg1_19idTemp = null;
+        if(!arg1_19id.equals("")){
+        java.text.DateFormat dateFormatarg161 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTemparg161  = dateFormatarg161.parse(arg1_19id);
+         arg1_19idTemp = new java.util.GregorianCalendar();
+        arg1_19idTemp.setTime(dateTemparg161);
+        }
+        publicadores.DtReporte[] reporte56mtemp = sampleControladorPublishProxyid.reporte(arg0_18idTemp,arg1_19idTemp);
+if(reporte56mtemp == null){
+%>
+<%=reporte56mtemp %>
+<%
+}else{
+        String tempreturnp57 = null;
+        if(reporte56mtemp != null){
+        java.util.List listreturnp57= java.util.Arrays.asList(reporte56mtemp);
+        tempreturnp57 = listreturnp57.toString();
+        }
+        %>
+        <%=tempreturnp57%>
         <%
 }
 break;
-case 20:
+case 63:
         gotMethod = true;
-        String email_4id=  request.getParameter("email25");
-            java.lang.String email_4idTemp = null;
-        if(!email_4id.equals("")){
-         email_4idTemp  = email_4id;
-        }
-        String pw_5id=  request.getParameter("pw27");
-            java.lang.String pw_5idTemp = null;
-        if(!pw_5id.equals("")){
-         pw_5idTemp  = pw_5id;
-        }
-        String nombre_6id=  request.getParameter("nombre29");
-            java.lang.String nombre_6idTemp = null;
-        if(!nombre_6id.equals("")){
-         nombre_6idTemp  = nombre_6id;
-        }
-        %>
-        <jsp:useBean id="publicadores1DtUsuario_3id" scope="session" class="publicadores.DtUsuario" />
-        <%
-        publicadores1DtUsuario_3id.setEmail(email_4idTemp);
-        publicadores1DtUsuario_3id.setPw(pw_5idTemp);
-        publicadores1DtUsuario_3id.setNombre(nombre_6idTemp);
-        sampleControladorPublishProxyid.altaUsuario(publicadores1DtUsuario_3id);
-break;
-case 31:
-        gotMethod = true;
-        %>
-        <jsp:useBean id="publicadores1LocalDateTime_8id" scope="session" class="publicadores.LocalDateTime" />
-        <%
-        String id_9id=  request.getParameter("id38");
-            java.lang.Integer id_9idTemp = null;
-        if(!id_9id.equals("")){
-         id_9idTemp  = java.lang.Integer.valueOf(id_9id);
-        }
-        %>
-        <jsp:useBean id="publicadores1DtDonacion_7id" scope="session" class="publicadores.DtDonacion" />
-        <%
-        publicadores1DtDonacion_7id.setFechaIngresada(publicadores1LocalDateTime_8id);
-        publicadores1DtDonacion_7id.setId(id_9idTemp);
-        sampleControladorPublishProxyid.altaDonacion(publicadores1DtDonacion_7id);
-break;
-case 40:
-        gotMethod = true;
-        String arg0_10id=  request.getParameter("arg047");
-            java.lang.String arg0_10idTemp = null;
-        if(!arg0_10id.equals("")){
-         arg0_10idTemp  = arg0_10id;
-        }
-        publicadores.DtBeneficiario getBeneficiario40mtemp = sampleControladorPublishProxyid.getBeneficiario(arg0_10idTemp);
-if(getBeneficiario40mtemp == null){
+        publicadores.DtBeneficiario[] listaBeneficiarios63mtemp = sampleControladorPublishProxyid.listaBeneficiarios();
+if(listaBeneficiarios63mtemp == null){
 %>
-<%=getBeneficiario40mtemp %>
+<%=listaBeneficiarios63mtemp %>
+<%
+}else{
+        String tempreturnp64 = null;
+        if(listaBeneficiarios63mtemp != null){
+        java.util.List listreturnp64= java.util.Arrays.asList(listaBeneficiarios63mtemp);
+        tempreturnp64 = listreturnp64.toString();
+        }
+        %>
+        <%=tempreturnp64%>
+        <%
+}
+break;
+case 66:
+        gotMethod = true;
+        String fechaNacimiento_22id=  request.getParameter("fechaNacimiento73");
+            java.util.Calendar fechaNacimiento_22idTemp = null;
+        if(!fechaNacimiento_22id.equals("")){
+        java.text.DateFormat dateFormatfechaNacimiento73 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaNacimiento73  = dateFormatfechaNacimiento73.parse(fechaNacimiento_22id);
+         fechaNacimiento_22idTemp = new java.util.GregorianCalendar();
+        fechaNacimiento_22idTemp.setTime(dateTempfechaNacimiento73);
+        }
+        String direccion_23id=  request.getParameter("direccion75");
+            java.lang.String direccion_23idTemp = null;
+        if(!direccion_23id.equals("")){
+         direccion_23idTemp  = direccion_23id;
+        }
+        %>
+        <jsp:useBean id="publicadores1DtBeneficiario_21id" scope="session" class="publicadores.DtBeneficiario" />
+        <%
+        publicadores1DtBeneficiario_21id.setFechaNacimiento(fechaNacimiento_22idTemp);
+        publicadores1DtBeneficiario_21id.setDireccion(direccion_23idTemp);
+        String fechaIngresada_25id=  request.getParameter("fechaIngresada79");
+            java.util.Calendar fechaIngresada_25idTemp = null;
+        if(!fechaIngresada_25id.equals("")){
+        java.text.DateFormat dateFormatfechaIngresada79 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaIngresada79  = dateFormatfechaIngresada79.parse(fechaIngresada_25id);
+         fechaIngresada_25idTemp = new java.util.GregorianCalendar();
+        fechaIngresada_25idTemp.setTime(dateTempfechaIngresada79);
+        }
+        String id_26id=  request.getParameter("id81");
+            java.lang.Integer id_26idTemp = null;
+        if(!id_26id.equals("")){
+         id_26idTemp  = java.lang.Integer.valueOf(id_26id);
+        }
+        %>
+        <jsp:useBean id="publicadores1DtDonacion_24id" scope="session" class="publicadores.DtDonacion" />
+        <%
+        publicadores1DtDonacion_24id.setFechaIngresada(fechaIngresada_25idTemp);
+        publicadores1DtDonacion_24id.setId(id_26idTemp);
+        String fechaPreparacion_27id=  request.getParameter("fechaPreparacion83");
+            java.util.Calendar fechaPreparacion_27idTemp = null;
+        if(!fechaPreparacion_27id.equals("")){
+        java.text.DateFormat dateFormatfechaPreparacion83 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaPreparacion83  = dateFormatfechaPreparacion83.parse(fechaPreparacion_27id);
+         fechaPreparacion_27idTemp = new java.util.GregorianCalendar();
+        fechaPreparacion_27idTemp.setTime(dateTempfechaPreparacion83);
+        }
+        String fechaEntrega_28id=  request.getParameter("fechaEntrega85");
+            java.util.Calendar fechaEntrega_28idTemp = null;
+        if(!fechaEntrega_28id.equals("")){
+        java.text.DateFormat dateFormatfechaEntrega85 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaEntrega85  = dateFormatfechaEntrega85.parse(fechaEntrega_28id);
+         fechaEntrega_28idTemp = new java.util.GregorianCalendar();
+        fechaEntrega_28idTemp.setTime(dateTempfechaEntrega85);
+        }
+        String id_29id=  request.getParameter("id87");
+        int id_29idTemp  = Integer.parseInt(id_29id);
+        %>
+        <jsp:useBean id="publicadores1DtDistribucion_20id" scope="session" class="publicadores.DtDistribucion" />
+        <%
+        publicadores1DtDistribucion_20id.setBeneficiario(publicadores1DtBeneficiario_21id);
+        publicadores1DtDistribucion_20id.setDonacion(publicadores1DtDonacion_24id);
+        publicadores1DtDistribucion_20id.setFechaPreparacion(fechaPreparacion_27idTemp);
+        publicadores1DtDistribucion_20id.setFechaEntrega(fechaEntrega_28idTemp);
+        publicadores1DtDistribucion_20id.setId(id_29idTemp);
+        sampleControladorPublishProxyid.altaDistribucion(publicadores1DtDistribucion_20id);
+break;
+case 89:
+        gotMethod = true;
+        String arg0_30id=  request.getParameter("arg096");
+        int arg0_30idTemp  = Integer.parseInt(arg0_30id);
+        publicadores.DtDonacion getDonacion89mtemp = sampleControladorPublishProxyid.getDonacion(arg0_30idTemp);
+if(getDonacion89mtemp == null){
+%>
+<%=getDonacion89mtemp %>
 <%
 }else{
 %>
@@ -156,28 +308,29 @@ if(getBeneficiario40mtemp == null){
 <TD COLSPAN="3" ALIGN="LEFT">returnp:</TD>
 <TR>
 <TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">fechaNacimiento:</TD>
+<TD COLSPAN="2" ALIGN="LEFT">fechaIngresada:</TD>
 <TD>
 <%
-if(getBeneficiario40mtemp != null){
-publicadores.LocalDateTime typefechaNacimiento43 = getBeneficiario40mtemp.getFechaNacimiento();
-        if(typefechaNacimiento43!= null){
-        String tempfechaNacimiento43 = typefechaNacimiento43.toString();
+if(getDonacion89mtemp != null){
+java.util.Calendar typefechaIngresada92 = getDonacion89mtemp.getFechaIngresada();
+        java.text.DateFormat dateFormatfechaIngresada92 = java.text.DateFormat.getDateInstance();
+        java.util.Date datefechaIngresada92 = typefechaIngresada92.getTime();
+        String tempResultfechaIngresada92 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaIngresada92.format(datefechaIngresada92));
         %>
-        <%=tempfechaNacimiento43%>
+        <%= tempResultfechaIngresada92 %>
         <%
-        }}%>
+}%>
 </TD>
 <TR>
 <TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">direccion:</TD>
+<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
 <TD>
 <%
-if(getBeneficiario40mtemp != null){
-java.lang.String typedireccion45 = getBeneficiario40mtemp.getDireccion();
-        String tempResultdireccion45 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedireccion45));
+if(getDonacion89mtemp != null){
+java.lang.Integer typeid94 = getDonacion89mtemp.getId();
+        String tempResultid94 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeid94));
         %>
-        <%= tempResultdireccion45 %>
+        <%= tempResultid94 %>
         <%
 }%>
 </TD>
@@ -185,88 +338,14 @@ java.lang.String typedireccion45 = getBeneficiario40mtemp.getDireccion();
 <%
 }
 break;
-case 49:
+case 98:
         gotMethod = true;
-        %>
-        <jsp:useBean id="publicadores1LocalDateTime_13id" scope="session" class="publicadores.LocalDateTime" />
-        <%
-        String direccion_14id=  request.getParameter("direccion58");
-            java.lang.String direccion_14idTemp = null;
-        if(!direccion_14id.equals("")){
-         direccion_14idTemp  = direccion_14id;
-        }
-        %>
-        <jsp:useBean id="publicadores1DtBeneficiario_12id" scope="session" class="publicadores.DtBeneficiario" />
-        <%
-        publicadores1DtBeneficiario_12id.setFechaNacimiento(publicadores1LocalDateTime_13id);
-        publicadores1DtBeneficiario_12id.setDireccion(direccion_14idTemp);
-        %>
-        <jsp:useBean id="publicadores1LocalDateTime_16id" scope="session" class="publicadores.LocalDateTime" />
-        <%
-        String id_17id=  request.getParameter("id64");
-            java.lang.Integer id_17idTemp = null;
-        if(!id_17id.equals("")){
-         id_17idTemp  = java.lang.Integer.valueOf(id_17id);
-        }
-        %>
-        <jsp:useBean id="publicadores1DtDonacion_15id" scope="session" class="publicadores.DtDonacion" />
-        <%
-        publicadores1DtDonacion_15id.setFechaIngresada(publicadores1LocalDateTime_16id);
-        publicadores1DtDonacion_15id.setId(id_17idTemp);
-        String fechaPreparacion_18id=  request.getParameter("fechaPreparacion66");
-            java.util.Calendar fechaPreparacion_18idTemp = null;
-        if(!fechaPreparacion_18id.equals("")){
-        java.text.DateFormat dateFormatfechaPreparacion66 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTempfechaPreparacion66  = dateFormatfechaPreparacion66.parse(fechaPreparacion_18id);
-         fechaPreparacion_18idTemp = new java.util.GregorianCalendar();
-        fechaPreparacion_18idTemp.setTime(dateTempfechaPreparacion66);
-        }
-        String fechaEntrega_19id=  request.getParameter("fechaEntrega68");
-            java.util.Calendar fechaEntrega_19idTemp = null;
-        if(!fechaEntrega_19id.equals("")){
-        java.text.DateFormat dateFormatfechaEntrega68 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTempfechaEntrega68  = dateFormatfechaEntrega68.parse(fechaEntrega_19id);
-         fechaEntrega_19idTemp = new java.util.GregorianCalendar();
-        fechaEntrega_19idTemp.setTime(dateTempfechaEntrega68);
-        }
-        String id_20id=  request.getParameter("id70");
-        int id_20idTemp  = Integer.parseInt(id_20id);
-        %>
-        <jsp:useBean id="publicadores1DtDistribucion_11id" scope="session" class="publicadores.DtDistribucion" />
-        <%
-        publicadores1DtDistribucion_11id.setBeneficiario(publicadores1DtBeneficiario_12id);
-        publicadores1DtDistribucion_11id.setDonacion(publicadores1DtDonacion_15id);
-        publicadores1DtDistribucion_11id.setFechaPreparacion(fechaPreparacion_18idTemp);
-        publicadores1DtDistribucion_11id.setFechaEntrega(fechaEntrega_19idTemp);
-        publicadores1DtDistribucion_11id.setId(id_20idTemp);
-        sampleControladorPublishProxyid.modificarDistribucion(publicadores1DtDistribucion_11id);
-break;
-case 72:
-        gotMethod = true;
-        int[] listarDonaciones72mtemp = sampleControladorPublishProxyid.listarDonaciones();
-if(listarDonaciones72mtemp == null){
+        String arg0_31id=  request.getParameter("arg0119");
+        int arg0_31idTemp  = Integer.parseInt(arg0_31id);
+        publicadores.DtDistribucion getDistribucion98mtemp = sampleControladorPublishProxyid.getDistribucion(arg0_31idTemp);
+if(getDistribucion98mtemp == null){
 %>
-<%=listarDonaciones72mtemp %>
-<%
-}else{
-        String tempreturnp73 = "[";        for(int ireturnp73=0;ireturnp73< listarDonaciones72mtemp.length;ireturnp73++){
-            tempreturnp73 = tempreturnp73 + listarDonaciones72mtemp[ireturnp73] + ",";
-        }
-        int lengthreturnp73 = tempreturnp73.length();
-        tempreturnp73 = tempreturnp73.substring(0,(lengthreturnp73 - 1)) + "]";
-        %>
-        <%=tempreturnp73%>
-        <%
-}
-break;
-case 75:
-        gotMethod = true;
-        String arg0_21id=  request.getParameter("arg096");
-        int arg0_21idTemp  = Integer.parseInt(arg0_21id);
-        publicadores.DtDistribucion getDistribucion75mtemp = sampleControladorPublishProxyid.getDistribucion(arg0_21idTemp);
-if(getDistribucion75mtemp == null){
-%>
-<%=getDistribucion75mtemp %>
+<%=getDistribucion98mtemp %>
 <%
 }else{
 %>
@@ -282,16 +361,17 @@ if(getDistribucion75mtemp == null){
 <TD COLSPAN="1" ALIGN="LEFT">fechaNacimiento:</TD>
 <TD>
 <%
-if(getDistribucion75mtemp != null){
-publicadores.DtBeneficiario tebece0=getDistribucion75mtemp.getBeneficiario();
+if(getDistribucion98mtemp != null){
+publicadores.DtBeneficiario tebece0=getDistribucion98mtemp.getBeneficiario();
 if(tebece0 != null){
-publicadores.LocalDateTime typefechaNacimiento80 = tebece0.getFechaNacimiento();
-        if(typefechaNacimiento80!= null){
-        String tempfechaNacimiento80 = typefechaNacimiento80.toString();
+java.util.Calendar typefechaNacimiento103 = tebece0.getFechaNacimiento();
+        java.text.DateFormat dateFormatfechaNacimiento103 = java.text.DateFormat.getDateInstance();
+        java.util.Date datefechaNacimiento103 = typefechaNacimiento103.getTime();
+        String tempResultfechaNacimiento103 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaNacimiento103.format(datefechaNacimiento103));
         %>
-        <%=tempfechaNacimiento80%>
+        <%= tempResultfechaNacimiento103 %>
         <%
-        }}}%>
+}}%>
 </TD>
 <TR>
 <TD WIDTH="5%"></TD>
@@ -299,13 +379,13 @@ publicadores.LocalDateTime typefechaNacimiento80 = tebece0.getFechaNacimiento();
 <TD COLSPAN="1" ALIGN="LEFT">direccion:</TD>
 <TD>
 <%
-if(getDistribucion75mtemp != null){
-publicadores.DtBeneficiario tebece0=getDistribucion75mtemp.getBeneficiario();
+if(getDistribucion98mtemp != null){
+publicadores.DtBeneficiario tebece0=getDistribucion98mtemp.getBeneficiario();
 if(tebece0 != null){
-java.lang.String typedireccion82 = tebece0.getDireccion();
-        String tempResultdireccion82 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedireccion82));
+java.lang.String typedireccion105 = tebece0.getDireccion();
+        String tempResultdireccion105 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedireccion105));
         %>
-        <%= tempResultdireccion82 %>
+        <%= tempResultdireccion105 %>
         <%
 }}%>
 </TD>
@@ -318,16 +398,17 @@ java.lang.String typedireccion82 = tebece0.getDireccion();
 <TD COLSPAN="1" ALIGN="LEFT">fechaIngresada:</TD>
 <TD>
 <%
-if(getDistribucion75mtemp != null){
-publicadores.DtDonacion tebece0=getDistribucion75mtemp.getDonacion();
+if(getDistribucion98mtemp != null){
+publicadores.DtDonacion tebece0=getDistribucion98mtemp.getDonacion();
 if(tebece0 != null){
-publicadores.LocalDateTime typefechaIngresada86 = tebece0.getFechaIngresada();
-        if(typefechaIngresada86!= null){
-        String tempfechaIngresada86 = typefechaIngresada86.toString();
+java.util.Calendar typefechaIngresada109 = tebece0.getFechaIngresada();
+        java.text.DateFormat dateFormatfechaIngresada109 = java.text.DateFormat.getDateInstance();
+        java.util.Date datefechaIngresada109 = typefechaIngresada109.getTime();
+        String tempResultfechaIngresada109 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaIngresada109.format(datefechaIngresada109));
         %>
-        <%=tempfechaIngresada86%>
+        <%= tempResultfechaIngresada109 %>
         <%
-        }}}%>
+}}%>
 </TD>
 <TR>
 <TD WIDTH="5%"></TD>
@@ -335,13 +416,13 @@ publicadores.LocalDateTime typefechaIngresada86 = tebece0.getFechaIngresada();
 <TD COLSPAN="1" ALIGN="LEFT">id:</TD>
 <TD>
 <%
-if(getDistribucion75mtemp != null){
-publicadores.DtDonacion tebece0=getDistribucion75mtemp.getDonacion();
+if(getDistribucion98mtemp != null){
+publicadores.DtDonacion tebece0=getDistribucion98mtemp.getDonacion();
 if(tebece0 != null){
-java.lang.Integer typeid88 = tebece0.getId();
-        String tempResultid88 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeid88));
+java.lang.Integer typeid111 = tebece0.getId();
+        String tempResultid111 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeid111));
         %>
-        <%= tempResultid88 %>
+        <%= tempResultid111 %>
         <%
 }}%>
 </TD>
@@ -350,13 +431,13 @@ java.lang.Integer typeid88 = tebece0.getId();
 <TD COLSPAN="2" ALIGN="LEFT">fechaPreparacion:</TD>
 <TD>
 <%
-if(getDistribucion75mtemp != null){
-java.util.Calendar typefechaPreparacion90 = getDistribucion75mtemp.getFechaPreparacion();
-        java.text.DateFormat dateFormatfechaPreparacion90 = java.text.DateFormat.getDateInstance();
-        java.util.Date datefechaPreparacion90 = typefechaPreparacion90.getTime();
-        String tempResultfechaPreparacion90 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaPreparacion90.format(datefechaPreparacion90));
+if(getDistribucion98mtemp != null){
+java.util.Calendar typefechaPreparacion113 = getDistribucion98mtemp.getFechaPreparacion();
+        java.text.DateFormat dateFormatfechaPreparacion113 = java.text.DateFormat.getDateInstance();
+        java.util.Date datefechaPreparacion113 = typefechaPreparacion113.getTime();
+        String tempResultfechaPreparacion113 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaPreparacion113.format(datefechaPreparacion113));
         %>
-        <%= tempResultfechaPreparacion90 %>
+        <%= tempResultfechaPreparacion113 %>
         <%
 }%>
 </TD>
@@ -365,13 +446,13 @@ java.util.Calendar typefechaPreparacion90 = getDistribucion75mtemp.getFechaPrepa
 <TD COLSPAN="2" ALIGN="LEFT">fechaEntrega:</TD>
 <TD>
 <%
-if(getDistribucion75mtemp != null){
-java.util.Calendar typefechaEntrega92 = getDistribucion75mtemp.getFechaEntrega();
-        java.text.DateFormat dateFormatfechaEntrega92 = java.text.DateFormat.getDateInstance();
-        java.util.Date datefechaEntrega92 = typefechaEntrega92.getTime();
-        String tempResultfechaEntrega92 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaEntrega92.format(datefechaEntrega92));
+if(getDistribucion98mtemp != null){
+java.util.Calendar typefechaEntrega115 = getDistribucion98mtemp.getFechaEntrega();
+        java.text.DateFormat dateFormatfechaEntrega115 = java.text.DateFormat.getDateInstance();
+        java.util.Date datefechaEntrega115 = typefechaEntrega115.getTime();
+        String tempResultfechaEntrega115 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaEntrega115.format(datefechaEntrega115));
         %>
-        <%= tempResultfechaEntrega92 %>
+        <%= tempResultfechaEntrega115 %>
         <%
 }%>
 </TD>
@@ -380,23 +461,44 @@ java.util.Calendar typefechaEntrega92 = getDistribucion75mtemp.getFechaEntrega()
 <TD COLSPAN="2" ALIGN="LEFT">id:</TD>
 <TD>
 <%
-if(getDistribucion75mtemp != null){
+if(getDistribucion98mtemp != null){
 %>
-<%=getDistribucion75mtemp.getId()
+<%=getDistribucion98mtemp.getId()
 %><%}%>
 </TD>
 </TABLE>
 <%
 }
 break;
-case 98:
+case 121:
         gotMethod = true;
-        String arg0_22id=  request.getParameter("arg0105");
-        int arg0_22idTemp  = Integer.parseInt(arg0_22id);
-        publicadores.DtDonacion getDonacion98mtemp = sampleControladorPublishProxyid.getDonacion(arg0_22idTemp);
-if(getDonacion98mtemp == null){
+        int[] listarDonaciones121mtemp = sampleControladorPublishProxyid.listarDonaciones();
+if(listarDonaciones121mtemp == null){
 %>
-<%=getDonacion98mtemp %>
+<%=listarDonaciones121mtemp %>
+<%
+}else{
+        String tempreturnp122 = "[";        for(int ireturnp122=0;ireturnp122< listarDonaciones121mtemp.length;ireturnp122++){
+            tempreturnp122 = tempreturnp122 + listarDonaciones121mtemp[ireturnp122] + ",";
+        }
+        int lengthreturnp122 = tempreturnp122.length();
+        tempreturnp122 = tempreturnp122.substring(0,(lengthreturnp122 - 1)) + "]";
+        %>
+        <%=tempreturnp122%>
+        <%
+}
+break;
+case 124:
+        gotMethod = true;
+        String arg0_32id=  request.getParameter("arg0131");
+            java.lang.String arg0_32idTemp = null;
+        if(!arg0_32id.equals("")){
+         arg0_32idTemp  = arg0_32id;
+        }
+        publicadores.DtBeneficiario getBeneficiario124mtemp = sampleControladorPublishProxyid.getBeneficiario(arg0_32idTemp);
+if(getBeneficiario124mtemp == null){
+%>
+<%=getBeneficiario124mtemp %>
 <%
 }else{
 %>
@@ -405,28 +507,29 @@ if(getDonacion98mtemp == null){
 <TD COLSPAN="3" ALIGN="LEFT">returnp:</TD>
 <TR>
 <TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">fechaIngresada:</TD>
+<TD COLSPAN="2" ALIGN="LEFT">fechaNacimiento:</TD>
 <TD>
 <%
-if(getDonacion98mtemp != null){
-publicadores.LocalDateTime typefechaIngresada101 = getDonacion98mtemp.getFechaIngresada();
-        if(typefechaIngresada101!= null){
-        String tempfechaIngresada101 = typefechaIngresada101.toString();
+if(getBeneficiario124mtemp != null){
+java.util.Calendar typefechaNacimiento127 = getBeneficiario124mtemp.getFechaNacimiento();
+        java.text.DateFormat dateFormatfechaNacimiento127 = java.text.DateFormat.getDateInstance();
+        java.util.Date datefechaNacimiento127 = typefechaNacimiento127.getTime();
+        String tempResultfechaNacimiento127 = org.eclipse.jst.ws.util.JspUtils.markup(dateFormatfechaNacimiento127.format(datefechaNacimiento127));
         %>
-        <%=tempfechaIngresada101%>
+        <%= tempResultfechaNacimiento127 %>
         <%
-        }}%>
+}%>
 </TD>
 <TR>
 <TD WIDTH="5%"></TD>
-<TD COLSPAN="2" ALIGN="LEFT">id:</TD>
+<TD COLSPAN="2" ALIGN="LEFT">direccion:</TD>
 <TD>
 <%
-if(getDonacion98mtemp != null){
-java.lang.Integer typeid103 = getDonacion98mtemp.getId();
-        String tempResultid103 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typeid103));
+if(getBeneficiario124mtemp != null){
+java.lang.String typedireccion129 = getBeneficiario124mtemp.getDireccion();
+        String tempResultdireccion129 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typedireccion129));
         %>
-        <%= tempResultid103 %>
+        <%= tempResultdireccion129 %>
         <%
 }%>
 </TD>
@@ -434,91 +537,138 @@ java.lang.Integer typeid103 = getDonacion98mtemp.getId();
 <%
 }
 break;
-case 107:
+case 133:
         gotMethod = true;
-        %>
-        <jsp:useBean id="publicadores1LocalDateTime_25id" scope="session" class="publicadores.LocalDateTime" />
-        <%
-        String direccion_26id=  request.getParameter("direccion116");
-            java.lang.String direccion_26idTemp = null;
-        if(!direccion_26id.equals("")){
-         direccion_26idTemp  = direccion_26id;
+        String numeroDeLicencia_34id=  request.getParameter("numeroDeLicencia138");
+            java.lang.String numeroDeLicencia_34idTemp = null;
+        if(!numeroDeLicencia_34id.equals("")){
+         numeroDeLicencia_34idTemp  = numeroDeLicencia_34id;
+        }
+        String direccion_35id=  request.getParameter("direccion140");
+            java.lang.String direccion_35idTemp = null;
+        if(!direccion_35id.equals("")){
+         direccion_35idTemp  = direccion_35id;
+        }
+        String fechaNacimiento_36id=  request.getParameter("fechaNacimiento142");
+            java.util.Calendar fechaNacimiento_36idTemp = null;
+        if(!fechaNacimiento_36id.equals("")){
+        java.text.DateFormat dateFormatfechaNacimiento142 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaNacimiento142  = dateFormatfechaNacimiento142.parse(fechaNacimiento_36id);
+         fechaNacimiento_36idTemp = new java.util.GregorianCalendar();
+        fechaNacimiento_36idTemp.setTime(dateTempfechaNacimiento142);
+        }
+        String email_37id=  request.getParameter("email144");
+            java.lang.String email_37idTemp = null;
+        if(!email_37id.equals("")){
+         email_37idTemp  = email_37id;
+        }
+        String pw_38id=  request.getParameter("pw146");
+            java.lang.String pw_38idTemp = null;
+        if(!pw_38id.equals("")){
+         pw_38idTemp  = pw_38id;
+        }
+        String nombre_39id=  request.getParameter("nombre148");
+            java.lang.String nombre_39idTemp = null;
+        if(!nombre_39id.equals("")){
+         nombre_39idTemp  = nombre_39id;
         }
         %>
-        <jsp:useBean id="publicadores1DtBeneficiario_24id" scope="session" class="publicadores.DtBeneficiario" />
+        <jsp:useBean id="publicadores1DtUsrModificar_33id" scope="session" class="publicadores.DtUsrModificar" />
         <%
-        publicadores1DtBeneficiario_24id.setFechaNacimiento(publicadores1LocalDateTime_25id);
-        publicadores1DtBeneficiario_24id.setDireccion(direccion_26idTemp);
-        %>
-        <jsp:useBean id="publicadores1LocalDateTime_28id" scope="session" class="publicadores.LocalDateTime" />
-        <%
-        String id_29id=  request.getParameter("id122");
-            java.lang.Integer id_29idTemp = null;
-        if(!id_29id.equals("")){
-         id_29idTemp  = java.lang.Integer.valueOf(id_29id);
+        publicadores1DtUsrModificar_33id.setNumeroDeLicencia(numeroDeLicencia_34idTemp);
+        publicadores1DtUsrModificar_33id.setDireccion(direccion_35idTemp);
+        publicadores1DtUsrModificar_33id.setFechaNacimiento(fechaNacimiento_36idTemp);
+        publicadores1DtUsrModificar_33id.setEmail(email_37idTemp);
+        publicadores1DtUsrModificar_33id.setPw(pw_38idTemp);
+        publicadores1DtUsrModificar_33id.setNombre(nombre_39idTemp);
+        String arg1_40id=  request.getParameter("arg1150");
+            java.lang.String arg1_40idTemp = null;
+        if(!arg1_40id.equals("")){
+         arg1_40idTemp  = arg1_40id;
         }
-        %>
-        <jsp:useBean id="publicadores1DtDonacion_27id" scope="session" class="publicadores.DtDonacion" />
-        <%
-        publicadores1DtDonacion_27id.setFechaIngresada(publicadores1LocalDateTime_28id);
-        publicadores1DtDonacion_27id.setId(id_29idTemp);
-        String fechaPreparacion_30id=  request.getParameter("fechaPreparacion124");
-            java.util.Calendar fechaPreparacion_30idTemp = null;
-        if(!fechaPreparacion_30id.equals("")){
-        java.text.DateFormat dateFormatfechaPreparacion124 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTempfechaPreparacion124  = dateFormatfechaPreparacion124.parse(fechaPreparacion_30id);
-         fechaPreparacion_30idTemp = new java.util.GregorianCalendar();
-        fechaPreparacion_30idTemp.setTime(dateTempfechaPreparacion124);
+        String arg2_41id=  request.getParameter("arg2152");
+            java.lang.String arg2_41idTemp = null;
+        if(!arg2_41id.equals("")){
+         arg2_41idTemp  = arg2_41id;
         }
-        String fechaEntrega_31id=  request.getParameter("fechaEntrega126");
-            java.util.Calendar fechaEntrega_31idTemp = null;
-        if(!fechaEntrega_31id.equals("")){
-        java.text.DateFormat dateFormatfechaEntrega126 = java.text.DateFormat.getDateInstance();
-        java.util.Date dateTempfechaEntrega126  = dateFormatfechaEntrega126.parse(fechaEntrega_31id);
-         fechaEntrega_31idTemp = new java.util.GregorianCalendar();
-        fechaEntrega_31idTemp.setTime(dateTempfechaEntrega126);
+        publicadores.EstadoBeneficiario publicadores1EstadoBeneficiario_42id = null;
+        String arg4_43id=  request.getParameter("arg4156");
+            java.lang.String arg4_43idTemp = null;
+        if(!arg4_43id.equals("")){
+         arg4_43idTemp  = arg4_43id;
         }
-        String id_32id=  request.getParameter("id128");
-        int id_32idTemp  = Integer.parseInt(id_32id);
-        %>
-        <jsp:useBean id="publicadores1DtDistribucion_23id" scope="session" class="publicadores.DtDistribucion" />
-        <%
-        publicadores1DtDistribucion_23id.setBeneficiario(publicadores1DtBeneficiario_24id);
-        publicadores1DtDistribucion_23id.setDonacion(publicadores1DtDonacion_27id);
-        publicadores1DtDistribucion_23id.setFechaPreparacion(fechaPreparacion_30idTemp);
-        publicadores1DtDistribucion_23id.setFechaEntrega(fechaEntrega_31idTemp);
-        publicadores1DtDistribucion_23id.setId(id_32idTemp);
-        sampleControladorPublishProxyid.altaDistribucion(publicadores1DtDistribucion_23id);
+        String arg5_44id=  request.getParameter("arg5158");
+            java.util.Calendar arg5_44idTemp = null;
+        if(!arg5_44id.equals("")){
+        java.text.DateFormat dateFormatarg5158 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTemparg5158  = dateFormatarg5158.parse(arg5_44id);
+         arg5_44idTemp = new java.util.GregorianCalendar();
+        arg5_44idTemp.setTime(dateTemparg5158);
+        }
+        publicadores.Barrio publicadores1Barrio_45id = null;
+        String arg7_46id=  request.getParameter("arg7162");
+            java.lang.String arg7_46idTemp = null;
+        if(!arg7_46id.equals("")){
+         arg7_46idTemp  = arg7_46id;
+        }
+        String arg8_47id=  request.getParameter("arg8164");
+            java.lang.String arg8_47idTemp = null;
+        if(!arg8_47id.equals("")){
+         arg8_47idTemp  = arg8_47id;
+        }
+        sampleControladorPublishProxyid.modificarUsuario(publicadores1DtUsrModificar_33id,arg1_40idTemp,arg2_41idTemp,publicadores1EstadoBeneficiario_42id,arg4_43idTemp,arg5_44idTemp,publicadores1Barrio_45id,arg7_46idTemp,arg8_47idTemp);
 break;
-case 130:
+case 166:
         gotMethod = true;
-        publicadores.DtBeneficiario[] listaBeneficiarios130mtemp = sampleControladorPublishProxyid.listaBeneficiarios();
-if(listaBeneficiarios130mtemp == null){
+        String fechaIngresada_49id=  request.getParameter("fechaIngresada171");
+            java.util.Calendar fechaIngresada_49idTemp = null;
+        if(!fechaIngresada_49id.equals("")){
+        java.text.DateFormat dateFormatfechaIngresada171 = java.text.DateFormat.getDateInstance();
+        java.util.Date dateTempfechaIngresada171  = dateFormatfechaIngresada171.parse(fechaIngresada_49id);
+         fechaIngresada_49idTemp = new java.util.GregorianCalendar();
+        fechaIngresada_49idTemp.setTime(dateTempfechaIngresada171);
+        }
+        String id_50id=  request.getParameter("id173");
+            java.lang.Integer id_50idTemp = null;
+        if(!id_50id.equals("")){
+         id_50idTemp  = java.lang.Integer.valueOf(id_50id);
+        }
+        %>
+        <jsp:useBean id="publicadores1DtDonacion_48id" scope="session" class="publicadores.DtDonacion" />
+        <%
+        publicadores1DtDonacion_48id.setFechaIngresada(fechaIngresada_49idTemp);
+        publicadores1DtDonacion_48id.setId(id_50idTemp);
+        sampleControladorPublishProxyid.modificarDonacion(publicadores1DtDonacion_48id);
+break;
+case 175:
+        gotMethod = true;
+        publicadores.DtRepartidor[] listaRepartidores175mtemp = sampleControladorPublishProxyid.listaRepartidores();
+if(listaRepartidores175mtemp == null){
 %>
-<%=listaBeneficiarios130mtemp %>
+<%=listaRepartidores175mtemp %>
 <%
 }else{
-        String tempreturnp131 = null;
-        if(listaBeneficiarios130mtemp != null){
-        java.util.List listreturnp131= java.util.Arrays.asList(listaBeneficiarios130mtemp);
-        tempreturnp131 = listreturnp131.toString();
+        String tempreturnp176 = null;
+        if(listaRepartidores175mtemp != null){
+        java.util.List listreturnp176= java.util.Arrays.asList(listaRepartidores175mtemp);
+        tempreturnp176 = listreturnp176.toString();
         }
         %>
-        <%=tempreturnp131%>
+        <%=tempreturnp176%>
         <%
 }
 break;
-case 133:
+case 178:
         gotMethod = true;
-        String arg0_33id=  request.getParameter("arg0138");
-            java.lang.String arg0_33idTemp = null;
-        if(!arg0_33id.equals("")){
-         arg0_33idTemp  = arg0_33id;
+        String arg0_51id=  request.getParameter("arg0183");
+            java.lang.String arg0_51idTemp = null;
+        if(!arg0_51id.equals("")){
+         arg0_51idTemp  = arg0_51id;
         }
-        publicadores.DtRepartidor getRepartidor133mtemp = sampleControladorPublishProxyid.getRepartidor(arg0_33idTemp);
-if(getRepartidor133mtemp == null){
+        publicadores.DtRepartidor getRepartidor178mtemp = sampleControladorPublishProxyid.getRepartidor(arg0_51idTemp);
+if(getRepartidor178mtemp == null){
 %>
-<%=getRepartidor133mtemp %>
+<%=getRepartidor178mtemp %>
 <%
 }else{
 %>
@@ -530,122 +680,16 @@ if(getRepartidor133mtemp == null){
 <TD COLSPAN="2" ALIGN="LEFT">numeroDeLicencia:</TD>
 <TD>
 <%
-if(getRepartidor133mtemp != null){
-java.lang.String typenumeroDeLicencia136 = getRepartidor133mtemp.getNumeroDeLicencia();
-        String tempResultnumeroDeLicencia136 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenumeroDeLicencia136));
+if(getRepartidor178mtemp != null){
+java.lang.String typenumeroDeLicencia181 = getRepartidor178mtemp.getNumeroDeLicencia();
+        String tempResultnumeroDeLicencia181 = org.eclipse.jst.ws.util.JspUtils.markup(String.valueOf(typenumeroDeLicencia181));
         %>
-        <%= tempResultnumeroDeLicencia136 %>
+        <%= tempResultnumeroDeLicencia181 %>
         <%
 }%>
 </TD>
 </TABLE>
 <%
-}
-break;
-case 140:
-        gotMethod = true;
-        %>
-        <jsp:useBean id="publicadores1LocalDateTime_35id" scope="session" class="publicadores.LocalDateTime" />
-        <%
-        String id_36id=  request.getParameter("id147");
-            java.lang.Integer id_36idTemp = null;
-        if(!id_36id.equals("")){
-         id_36idTemp  = java.lang.Integer.valueOf(id_36id);
-        }
-        %>
-        <jsp:useBean id="publicadores1DtDonacion_34id" scope="session" class="publicadores.DtDonacion" />
-        <%
-        publicadores1DtDonacion_34id.setFechaIngresada(publicadores1LocalDateTime_35id);
-        publicadores1DtDonacion_34id.setId(id_36idTemp);
-        sampleControladorPublishProxyid.modificarDonacion(publicadores1DtDonacion_34id);
-break;
-case 149:
-        gotMethod = true;
-        String numeroDeLicencia_38id=  request.getParameter("numeroDeLicencia154");
-            java.lang.String numeroDeLicencia_38idTemp = null;
-        if(!numeroDeLicencia_38id.equals("")){
-         numeroDeLicencia_38idTemp  = numeroDeLicencia_38id;
-        }
-        String direccion_39id=  request.getParameter("direccion156");
-            java.lang.String direccion_39idTemp = null;
-        if(!direccion_39id.equals("")){
-         direccion_39idTemp  = direccion_39id;
-        }
-        %>
-        <jsp:useBean id="publicadores1LocalDateTime_40id" scope="session" class="publicadores.LocalDateTime" />
-        <%
-        String email_41id=  request.getParameter("email160");
-            java.lang.String email_41idTemp = null;
-        if(!email_41id.equals("")){
-         email_41idTemp  = email_41id;
-        }
-        String pw_42id=  request.getParameter("pw162");
-            java.lang.String pw_42idTemp = null;
-        if(!pw_42id.equals("")){
-         pw_42idTemp  = pw_42id;
-        }
-        String nombre_43id=  request.getParameter("nombre164");
-            java.lang.String nombre_43idTemp = null;
-        if(!nombre_43id.equals("")){
-         nombre_43idTemp  = nombre_43id;
-        }
-        %>
-        <jsp:useBean id="publicadores1DtUsrModificar_37id" scope="session" class="publicadores.DtUsrModificar" />
-        <%
-        publicadores1DtUsrModificar_37id.setNumeroDeLicencia(numeroDeLicencia_38idTemp);
-        publicadores1DtUsrModificar_37id.setDireccion(direccion_39idTemp);
-        publicadores1DtUsrModificar_37id.setFechaNacimiento(publicadores1LocalDateTime_40id);
-        publicadores1DtUsrModificar_37id.setEmail(email_41idTemp);
-        publicadores1DtUsrModificar_37id.setPw(pw_42idTemp);
-        publicadores1DtUsrModificar_37id.setNombre(nombre_43idTemp);
-        String arg1_44id=  request.getParameter("arg1166");
-            java.lang.String arg1_44idTemp = null;
-        if(!arg1_44id.equals("")){
-         arg1_44idTemp  = arg1_44id;
-        }
-        String arg2_45id=  request.getParameter("arg2168");
-            java.lang.String arg2_45idTemp = null;
-        if(!arg2_45id.equals("")){
-         arg2_45idTemp  = arg2_45id;
-        }
-        publicadores.EstadoBeneficiario publicadores1EstadoBeneficiario_46id = null;
-        String arg4_47id=  request.getParameter("arg4172");
-            java.lang.String arg4_47idTemp = null;
-        if(!arg4_47id.equals("")){
-         arg4_47idTemp  = arg4_47id;
-        }
-        %>
-        <jsp:useBean id="publicadores1LocalDateTime_48id" scope="session" class="publicadores.LocalDateTime" />
-        <%
-        publicadores.Barrio publicadores1Barrio_49id = null;
-        String arg7_50id=  request.getParameter("arg7178");
-            java.lang.String arg7_50idTemp = null;
-        if(!arg7_50id.equals("")){
-         arg7_50idTemp  = arg7_50id;
-        }
-        String arg8_51id=  request.getParameter("arg8180");
-            java.lang.String arg8_51idTemp = null;
-        if(!arg8_51id.equals("")){
-         arg8_51idTemp  = arg8_51id;
-        }
-        sampleControladorPublishProxyid.modificarUsuario(publicadores1DtUsrModificar_37id,arg1_44idTemp,arg2_45idTemp,publicadores1EstadoBeneficiario_46id,arg4_47idTemp,publicadores1LocalDateTime_48id,publicadores1Barrio_49id,arg7_50idTemp,arg8_51idTemp);
-break;
-case 182:
-        gotMethod = true;
-        publicadores.DtRepartidor[] listaRepartidores182mtemp = sampleControladorPublishProxyid.listaRepartidores();
-if(listaRepartidores182mtemp == null){
-%>
-<%=listaRepartidores182mtemp %>
-<%
-}else{
-        String tempreturnp183 = null;
-        if(listaRepartidores182mtemp != null){
-        java.util.List listreturnp183= java.util.Arrays.asList(listaRepartidores182mtemp);
-        tempreturnp183 = listreturnp183.toString();
-        }
-        %>
-        <%=tempreturnp183%>
-        <%
 }
 break;
 case 185:

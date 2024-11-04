@@ -10,7 +10,7 @@ package publicadores;
 public class DtBeneficiario  extends publicadores.DtUsuario  implements java.io.Serializable {
     private java.lang.String direccion;
 
-    private publicadores.LocalDateTime fechaNacimiento;
+    private java.util.Calendar fechaNacimiento;
 
     private publicadores.EstadoBeneficiario estado;
 
@@ -24,7 +24,7 @@ public class DtBeneficiario  extends publicadores.DtUsuario  implements java.io.
            java.lang.String email,
            java.lang.String pw,
            java.lang.String direccion,
-           publicadores.LocalDateTime fechaNacimiento,
+           java.util.Calendar fechaNacimiento,
            publicadores.EstadoBeneficiario estado,
            publicadores.Barrio barrio) {
         super(
@@ -63,7 +63,7 @@ public class DtBeneficiario  extends publicadores.DtUsuario  implements java.io.
      * 
      * @return fechaNacimiento
      */
-    public publicadores.LocalDateTime getFechaNacimiento() {
+    public java.util.Calendar getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -73,7 +73,7 @@ public class DtBeneficiario  extends publicadores.DtUsuario  implements java.io.
      * 
      * @param fechaNacimiento
      */
-    public void setFechaNacimiento(publicadores.LocalDateTime fechaNacimiento) {
+    public void setFechaNacimiento(java.util.Calendar fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -183,7 +183,7 @@ public class DtBeneficiario  extends publicadores.DtUsuario  implements java.io.
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("fechaNacimiento");
         elemField.setXmlName(new javax.xml.namespace.QName("", "fechaNacimiento"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "localDateTime"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

@@ -19,7 +19,7 @@ public class DtArticulo  extends publicadores.DtDonacion  implements java.io.Ser
 
     public DtArticulo(
            java.lang.Integer id,
-           publicadores.LocalDateTime fechaIngresada,
+           java.util.Calendar fechaIngresada,
            java.lang.String descripcion,
            float peso,
            java.lang.String dimensiones) {

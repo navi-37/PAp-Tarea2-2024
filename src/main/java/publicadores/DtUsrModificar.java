@@ -16,7 +16,7 @@ public class DtUsrModificar  implements java.io.Serializable {
 
     private publicadores.EstadoBeneficiario estado;
 
-    private publicadores.LocalDateTime fechaNacimiento;
+    private java.util.Calendar fechaNacimiento;
 
     private java.lang.String nombre;
 
@@ -32,7 +32,7 @@ public class DtUsrModificar  implements java.io.Serializable {
            java.lang.String direccion,
            java.lang.String email,
            publicadores.EstadoBeneficiario estado,
-           publicadores.LocalDateTime fechaNacimiento,
+           java.util.Calendar fechaNacimiento,
            java.lang.String nombre,
            java.lang.String numeroDeLicencia,
            java.lang.String pw) {
@@ -132,7 +132,7 @@ public class DtUsrModificar  implements java.io.Serializable {
      * 
      * @return fechaNacimiento
      */
-    public publicadores.LocalDateTime getFechaNacimiento() {
+    public java.util.Calendar getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -142,7 +142,7 @@ public class DtUsrModificar  implements java.io.Serializable {
      * 
      * @param fechaNacimiento
      */
-    public void setFechaNacimiento(publicadores.LocalDateTime fechaNacimiento) {
+    public void setFechaNacimiento(java.util.Calendar fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -317,7 +317,7 @@ public class DtUsrModificar  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("fechaNacimiento");
         elemField.setXmlName(new javax.xml.namespace.QName("", "fechaNacimiento"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://publicadores/", "localDateTime"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

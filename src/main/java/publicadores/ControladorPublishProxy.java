@@ -44,28 +44,16 @@ public class ControladorPublishProxy implements publicadores.ControladorPublish 
     return controladorPublish;
   }
   
-  public publicadores.DtReporte[] reporte(java.util.Calendar arg0, java.util.Calendar arg1) throws java.rmi.RemoteException{
-    if (controladorPublish == null)
-      _initControladorPublishProxy();
-    return controladorPublish.reporte(arg0, arg1);
-  }
-  
-  public void altaUsuario(publicadores.DtUsuario arg0) throws java.rmi.RemoteException, publicadores.UsuarioRepetidoExc{
-    if (controladorPublish == null)
-      _initControladorPublishProxy();
-    controladorPublish.altaUsuario(arg0);
-  }
-  
   public void altaDonacion(publicadores.DtDonacion arg0) throws java.rmi.RemoteException, publicadores.DonacionRepetidaExc{
     if (controladorPublish == null)
       _initControladorPublishProxy();
     controladorPublish.altaDonacion(arg0);
   }
   
-  public publicadores.DtBeneficiario getBeneficiario(java.lang.String arg0) throws java.rmi.RemoteException, publicadores.BeneficiarioNoExisteExc{
+  public void altaUsuario(publicadores.DtUsuario arg0) throws java.rmi.RemoteException, publicadores.UsuarioRepetidoExc{
     if (controladorPublish == null)
       _initControladorPublishProxy();
-    return controladorPublish.getBeneficiario(arg0);
+    controladorPublish.altaUsuario(arg0);
   }
   
   public int[] listarLasDistribucionesFiltradas(publicadores.EstadoDistribucion arg0, publicadores.Barrio arg1) throws java.rmi.RemoteException{
@@ -80,28 +68,10 @@ public class ControladorPublishProxy implements publicadores.ControladorPublish 
     controladorPublish.modificarDistribucion(arg0);
   }
   
-  public int[] listarDonaciones() throws java.rmi.RemoteException{
+  public publicadores.DtReporte[] reporte(java.util.Calendar arg0, java.util.Calendar arg1) throws java.rmi.RemoteException{
     if (controladorPublish == null)
       _initControladorPublishProxy();
-    return controladorPublish.listarDonaciones();
-  }
-  
-  public publicadores.DtDistribucion getDistribucion(int arg0) throws java.rmi.RemoteException{
-    if (controladorPublish == null)
-      _initControladorPublishProxy();
-    return controladorPublish.getDistribucion(arg0);
-  }
-  
-  public publicadores.DtDonacion getDonacion(int arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc{
-    if (controladorPublish == null)
-      _initControladorPublishProxy();
-    return controladorPublish.getDonacion(arg0);
-  }
-  
-  public void altaDistribucion(publicadores.DtDistribucion arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc, publicadores.UsuarioNOBeneficiarioExc, publicadores.DistribucionRepetidaExc{
-    if (controladorPublish == null)
-      _initControladorPublishProxy();
-    controladorPublish.altaDistribucion(arg0);
+    return controladorPublish.reporte(arg0, arg1);
   }
   
   public publicadores.DtBeneficiario[] listaBeneficiarios() throws java.rmi.RemoteException{
@@ -110,10 +80,40 @@ public class ControladorPublishProxy implements publicadores.ControladorPublish 
     return controladorPublish.listaBeneficiarios();
   }
   
-  public publicadores.DtRepartidor getRepartidor(java.lang.String arg0) throws java.rmi.RemoteException, publicadores.RepartidorNoExisteExc{
+  public void altaDistribucion(publicadores.DtDistribucion arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc, publicadores.UsuarioNOBeneficiarioExc, publicadores.DistribucionRepetidaExc{
     if (controladorPublish == null)
       _initControladorPublishProxy();
-    return controladorPublish.getRepartidor(arg0);
+    controladorPublish.altaDistribucion(arg0);
+  }
+  
+  public publicadores.DtDonacion getDonacion(int arg0) throws java.rmi.RemoteException, publicadores.DonacionNoExisteExc{
+    if (controladorPublish == null)
+      _initControladorPublishProxy();
+    return controladorPublish.getDonacion(arg0);
+  }
+  
+  public publicadores.DtDistribucion getDistribucion(int arg0) throws java.rmi.RemoteException{
+    if (controladorPublish == null)
+      _initControladorPublishProxy();
+    return controladorPublish.getDistribucion(arg0);
+  }
+  
+  public int[] listarDonaciones() throws java.rmi.RemoteException{
+    if (controladorPublish == null)
+      _initControladorPublishProxy();
+    return controladorPublish.listarDonaciones();
+  }
+  
+  public publicadores.DtBeneficiario getBeneficiario(java.lang.String arg0) throws java.rmi.RemoteException, publicadores.BeneficiarioNoExisteExc{
+    if (controladorPublish == null)
+      _initControladorPublishProxy();
+    return controladorPublish.getBeneficiario(arg0);
+  }
+  
+  public void modificarUsuario(publicadores.DtUsrModificar arg0, java.lang.String arg1, java.lang.String arg2, publicadores.EstadoBeneficiario arg3, java.lang.String arg4, java.util.Calendar arg5, publicadores.Barrio arg6, java.lang.String arg7, java.lang.String arg8) throws java.rmi.RemoteException{
+    if (controladorPublish == null)
+      _initControladorPublishProxy();
+    controladorPublish.modificarUsuario(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
   }
   
   public void modificarDonacion(publicadores.DtDonacion arg0) throws java.rmi.RemoteException{
@@ -122,16 +122,16 @@ public class ControladorPublishProxy implements publicadores.ControladorPublish 
     controladorPublish.modificarDonacion(arg0);
   }
   
-  public void modificarUsuario(publicadores.DtUsrModificar arg0, java.lang.String arg1, java.lang.String arg2, publicadores.EstadoBeneficiario arg3, java.lang.String arg4, publicadores.LocalDateTime arg5, publicadores.Barrio arg6, java.lang.String arg7, java.lang.String arg8) throws java.rmi.RemoteException{
-    if (controladorPublish == null)
-      _initControladorPublishProxy();
-    controladorPublish.modificarUsuario(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
-  }
-  
   public publicadores.DtRepartidor[] listaRepartidores() throws java.rmi.RemoteException{
     if (controladorPublish == null)
       _initControladorPublishProxy();
     return controladorPublish.listaRepartidores();
+  }
+  
+  public publicadores.DtRepartidor getRepartidor(java.lang.String arg0) throws java.rmi.RemoteException, publicadores.RepartidorNoExisteExc{
+    if (controladorPublish == null)
+      _initControladorPublishProxy();
+    return controladorPublish.getRepartidor(arg0);
   }
   
   public publicadores.DtAlimento getAlimento(int arg0) throws java.rmi.RemoteException{
@@ -146,16 +146,16 @@ public class ControladorPublishProxy implements publicadores.ControladorPublish 
     return controladorPublish.getArticulo(arg0);
   }
   
-  public publicadores.DtUsuario getUsuario(java.lang.String arg0) throws java.rmi.RemoteException{
-    if (controladorPublish == null)
-      _initControladorPublishProxy();
-    return controladorPublish.getUsuario(arg0);
-  }
-  
   public publicadores.DtBeneficiario[] listarBeneficiariosPorEstadoYBarrio(publicadores.EstadoBeneficiario arg0, publicadores.Barrio arg1) throws java.rmi.RemoteException{
     if (controladorPublish == null)
       _initControladorPublishProxy();
     return controladorPublish.listarBeneficiariosPorEstadoYBarrio(arg0, arg1);
+  }
+  
+  public publicadores.DtUsuario getUsuario(java.lang.String arg0) throws java.rmi.RemoteException{
+    if (controladorPublish == null)
+      _initControladorPublishProxy();
+    return controladorPublish.getUsuario(arg0);
   }
   
   
