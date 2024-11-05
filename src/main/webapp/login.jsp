@@ -84,6 +84,12 @@
     </style>
 </head>
 <body>
+	<% 
+		String email = (String) request.getSession().getAttribute("useremail");
+		if(email != null){
+			response.sendRedirect("/asd/Logout");
+		} 
+	%>
     <div class="login-container">
         <a href="index.jsp" class="back-button">
             <i class="fas fa-arrow-left"></i> Volver

@@ -1,3 +1,11 @@
+<%@ page import="publicadores.DtBeneficiario"%>
+<%@ page import="publicadores.DtRepartidor"%>
+
+<%@ page import="publicadores.ControladorPublish"%>
+<%@ page import="publicadores.ControladorPublishService"%>
+<%@ page import="publicadores.ControladorPublishServiceLocator"%>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,8 +54,33 @@
 <body>
 <%
 	if(session.getAttribute("useremail") == null) {
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("index.jsp");
+		return;
 	}
+%>
+
+<%
+String email = (String) request.getSession().getAttribute("useremail");
+ControladorPublishService cps = new ControladorPublishServiceLocator();
+ControladorPublish port = null;
+
+try {
+    port = cps.getControladorPublishPort();
+    if (port == null) {
+        throw new RuntimeException("No se pudo obtener el puerto del controlador Publish.");
+    }
+
+    DtBeneficiario ben = (DtBeneficiario) port.getBeneficiario(email);
+    if (ben == null) {
+        throw new RuntimeException("sori");
+    } 
+
+} catch (Exception e) {
+    e.printStackTrace(); // Imprimir la traza de la excepción en la consola para depuración
+    request.setAttribute("errorMessage", e.getMessage()); // Pasar mensaje de error a la JSP
+    request.getRequestDispatcher("/error.jsp").forward(request, response); // Redirigir a una página de error
+}
+
 %>
     <header class="custom-header text-white p-4 position-relative d-flex justify-content-between align-items-center">
         <button class="btn btn-outline-light menu-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">

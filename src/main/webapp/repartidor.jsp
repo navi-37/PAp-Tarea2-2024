@@ -1,3 +1,11 @@
+<%@ page import="publicadores.DtBeneficiario"%>
+<%@ page import="publicadores.DtRepartidor"%>
+
+<%@ page import="publicadores.ControladorPublish"%>
+<%@ page import="publicadores.ControladorPublishService"%>
+<%@ page import="publicadores.ControladorPublishServiceLocator"%>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -46,9 +54,35 @@
 <body>
 <%
 	if(session.getAttribute("useremail") == null) {
-		response.sendRedirect("login.jsp");
+		response.sendRedirect("index.jsp");
+		return;
 	}
 %>
+
+<%
+String email = (String) request.getSession().getAttribute("useremail");
+ControladorPublishService cps = new ControladorPublishServiceLocator();
+ControladorPublish port = null;
+
+try {
+    port = cps.getControladorPublishPort();
+    if (port == null) {
+        throw new RuntimeException("No se pudo obtener el puerto del controlador Publish.");
+    }
+
+    DtRepartidor rep = (DtRepartidor) port.getRepartidor(email);
+    if (rep == null) {
+        throw new RuntimeException("sori");
+    } 
+
+} catch (Exception e) {
+    e.printStackTrace(); // Imprimir la traza de la excepción en la consola para depuración
+    request.setAttribute("errorMessage", e.getMessage()); // Pasar mensaje de error a la JSP
+    request.getRequestDispatcher("/error.jsp").forward(request, response); // Redirigir a una página de error
+}
+
+%>
+
     <header class="custom-header text-white p-4 position-relative d-flex justify-content-between align-items-center">
         <button class="btn btn-outline-light menu-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>

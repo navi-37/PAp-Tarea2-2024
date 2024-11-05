@@ -1,3 +1,81 @@
+<%@ page import="publicadores.DtBeneficiario"%>
+<%@ page import="publicadores.DtRepartidor"%>
+
+<%@ page import="publicadores.BeneficiarioNoExisteExc"%>
+<%@ page import="publicadores.RepartidorNoExisteExc"%>
+
+<%@ page import="publicadores.ControladorPublish"%>
+<%@ page import="publicadores.ControladorPublishService"%>
+<%@ page import="publicadores.ControladorPublishServiceLocator"%>
+
+<%
+String email = (String) request.getSession().getAttribute("useremail");
+System.out.println(email);
+if(email != null){
+	
+	ControladorPublishService cps = new ControladorPublishServiceLocator();
+	ControladorPublish port = null;
+
+	try {
+	    port = cps.getControladorPublishPort();
+	    if (port == null) {
+	        throw new RuntimeException("No se pudo obtener el puerto del controlador Publish.");
+	    }
+	
+	    
+	    DtRepartidor rep = null;
+        try {
+            rep = (DtRepartidor) port.getRepartidor(email);
+        } catch (RepartidorNoExisteExc e) {
+            System.out.println("No se encontró un repartidor con el email proporcionado.");
+        }
+
+        if (rep != null) {
+            System.out.println(rep.getEmail());
+            System.out.println("Usuario identificado como repartidor, redirigiendo a repartidor.jsp");
+            response.sendRedirect("repartidor.jsp");
+            return;
+        }
+        
+	    DtBeneficiario ben = null;
+        try {
+            ben = (DtBeneficiario) port.getBeneficiario(email);
+        } catch (BeneficiarioNoExisteExc e) {
+            System.out.println("No se encontró un repartidor con el email proporcionado.");
+        }
+
+        if (ben != null) {
+            System.out.println(ben.getEmail());
+            System.out.println("Usuario identificado como beneficiario, redirigiendo a beneficiario.jsp");
+            response.sendRedirect("beneficiario.jsp");
+            return;
+        }
+	    
+	    
+	    /*DtRepartidor rep = (DtRepartidor) port.getRepartidor(email);
+	    if (rep != null) {
+	        //throw new RuntimeException("sori");
+	        System.out.println(rep.getEmail());
+	        System.out.println("Usuario identificado como repartidor, redirigiendo a repartidor.jsp");
+	    	response.sendRedirect("repartidor.jsp");
+	    	return;
+	    }
+	    
+	    DtBeneficiario ben = (DtBeneficiario) port.getBeneficiario(email);
+	    if (ben != null) {
+	        //throw new RuntimeException("sori");
+	        System.out.println(ben.getEmail());
+	        System.out.println("Usuario identificado como beneficiario, redirigiendo a beneficiario.jsp");
+	    	response.sendRedirect("beneficiario.jsp");
+	    	return;
+	    } */
+	
+	} catch (Exception e) {
+	    e.printStackTrace();
+	}
+}
+%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">

@@ -37,9 +37,7 @@ public class VerPerfilRepartidor extends HttpServlet {
                 throw new RuntimeException("Donación no encontrada para el email: " + email);
             } 
 
-            // Pasar la donación a la JSP
             request.setAttribute("dtrep", rep);
-            //System.out.println("Atributo donacion establecido en request");
             request.getRequestDispatcher("/ver-perfil-repartidor.jsp").forward(request, response);
         
         } catch (Exception e) {

@@ -43,15 +43,13 @@ public class VerPerfilBeneficiario extends HttpServlet {
                 throw new RuntimeException("Donación no encontrada para el email: " + email);
             } 
 
-            // Pasar la donación a la JSP
             request.setAttribute("dtben", ben);
-            //System.out.println("Atributo donacion establecido en request");
             request.getRequestDispatcher("/ver-perfil-beneficiario.jsp").forward(request, response);
         
         } catch (Exception e) {
             e.printStackTrace(); // Imprimir la traza de la excepción en la consola para depuración
-            //request.setAttribute("errorMessage", e.getMessage()); // Pasar mensaje de error a la JSP
-            //request.getRequestDispatcher("/error.jsp").forward(request, response); // Redirigir a una página de error
+            request.setAttribute("errorMessage", e.getMessage()); // Pasar mensaje de error a la JSP
+            request.getRequestDispatcher("/error.jsp").forward(request, response); // Redirigir a una página de error
         }
         
     }
