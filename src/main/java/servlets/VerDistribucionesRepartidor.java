@@ -13,6 +13,7 @@ import publicadores.DtArticulo;
 import publicadores.DtBeneficiario;
 import publicadores.DtDistribucion;
 import publicadores.DtDonacion;
+import publicadores.DtRepartidor;
 import publicadores.EstadoDistribucion;
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class VerDistribucionesRepartidor extends HttpServlet {
     }
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //String email = (String) request.getSession().getAttribute("useremail");
+        String email = (String) request.getSession().getAttribute("useremail");
         ControladorPublishService cps = new ControladorPublishServiceLocator();
         ControladorPublish port = null;
 
@@ -39,6 +40,11 @@ public class VerDistribucionesRepartidor extends HttpServlet {
             port = cps.getControladorPublishPort();
             if (port == null) {
                 throw new RuntimeException("No se pudo obtener el puerto del controlador Publish.");
+            }
+            
+            DtRepartidor rep = (DtRepartidor) port.getRepartidor(email);
+            if (rep == null) {
+                throw new RuntimeException("sori");
             }
 
             int[] idDistribuciones = port.listarLasDistribucionesFiltradas(EstadoDistribucion.PENDIENTE, null);

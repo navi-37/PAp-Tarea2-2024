@@ -30,13 +30,19 @@ public class VerDistribucionesBeneficiario extends HttpServlet {
     }
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ControladorPublishService cps = new ControladorPublishServiceLocator();
+    	String email = (String) request.getSession().getAttribute("useremail");
+    	ControladorPublishService cps = new ControladorPublishServiceLocator();
         ControladorPublish port = null;
 
         try {
             port = cps.getControladorPublishPort();
             if (port == null) {
                 throw new RuntimeException("No se pudo obtener el puerto del controlador Publish.");
+            }
+            
+            DtBeneficiario ben = (DtBeneficiario) port.getBeneficiario(email);
+            if (ben == null) {
+                throw new RuntimeException("sori");
             }
 
             int[] idDistribuciones = port.listarLasDistribucionesFiltradas(null, null);

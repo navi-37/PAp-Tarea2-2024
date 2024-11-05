@@ -79,7 +79,7 @@
                  	%>
                  	<div class="distribucion-item">
                  	<div class="profile-field">
-                 	<p class="card-text"><strong>Id:</strong> <% out.print(d.getId());//out.print("69");  %></p>
+                 	<p class="card-text"><strong>Id:</strong> <% out.print(d.getId());%></p>
                 	</div>
                 	
                 <div class="profile-field">
@@ -87,34 +87,31 @@
 	                    Calendar fechaPreparacion = d.getFechaPreparacion();
 	                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	                    String fechaFormateada = sdf.format(fechaPreparacion.getTime());
-	                    //out.print(fechaFormateada);
 			        %></div>
-                <p class="card-text"><strong>Fecha de preparación:</strong> <% out.print(fechaFormateada); //out.print("dd/MM/yyyy"); // %></p>
+                <p class="card-text"><strong>Fecha de preparación:</strong> <% out.print(fechaFormateada); %></p>
                 </div>
 
         		<div class="profile-field">
-        		<p class="card-text"><strong>Email del beneficiario asociado:</strong> <% out.print(d.getBeneficiario().getEmail()); //out.print("beneficiario@mail.com"); // %></p>
+        		<p class="card-text"><strong>Email del beneficiario asociado:</strong> <% out.print(d.getBeneficiario().getEmail()); %></p>
         		</div>
 
         		<div class="profile-field">
-        		<p class="card-text"><strong>Id de donación asociada:</strong> <% out.print(d.getDonacion().getId()); //out.print("96"); // %></p>
+        		<p class="card-text"><strong>Id de donación asociada:</strong> <% out.print(d.getDonacion().getId()); %></p>
 			        </div>
 			        
 			    <div class="profile-field">
-			    <p class="card-text"><strong>Descripción de la donación:</strong> <% out.print(descripciones.get(i)); //out.print("Arroz"); // %></p>
+			    <p class="card-text"><strong>Descripción de la donación:</strong> <% out.print(descripciones.get(i)); %></p>
                     <div><% 
                     	i++;
 			        %></div>
 			        </div>
 			    <div class="profile-field">
-			    <p class="card-text"><strong>Estado:</strong> <% out.print(d.getEstado()); //out.print("PENDIENTE"); // %></p>
+			    <p class="card-text"><strong>Estado:</strong> <% out.print(d.getEstado()); %></p>
         		</div>
         		<% 
         		if (d.getEstado() != EstadoDistribucion.ENTREGADO){
         		
-	        		//int distribucionId = 69;
 				    int distribucionId = d.getId();
-				    out.print(distribucionId);
 				%>
 
 		

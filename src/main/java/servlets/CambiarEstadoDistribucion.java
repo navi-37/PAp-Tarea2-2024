@@ -1,45 +1,3 @@
-//package servlets;
-//
-//import jakarta.servlet.ServletException;
-//import jakarta.servlet.annotation.WebServlet;
-//import jakarta.servlet.http.HttpServlet;
-//import jakarta.servlet.http.HttpServletRequest;
-//import jakarta.servlet.http.HttpServletResponse;
-//import java.io.IOException;
-//
-///**
-// * Servlet implementation class CambiarEstadoDistribucion
-// */
-////@WebServlet("/CambiarEstadoDistribucion")
-//public class CambiarEstadoDistribucion extends HttpServlet {
-//	private static final long serialVersionUID = 1L;
-//       
-//    /**
-//     * @see HttpServlet#HttpServlet()
-//     */
-//    public CambiarEstadoDistribucion() {
-//        super();
-//        // TODO Auto-generated constructor stub
-//    }
-//
-//	/**
-//	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-//	 */
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-//	}
-//
-//	/**
-//	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-//	 */
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		doGet(request, response);
-//	}
-//
-//}
-
 package servlets;
 
 import jakarta.servlet.ServletException;
@@ -55,14 +13,12 @@ import publicadores.DtArticulo;
 import publicadores.DtBeneficiario;
 import publicadores.DtDistribucion;
 import publicadores.DtDonacion;
+import publicadores.DtRepartidor;
 import publicadores.EstadoDistribucion;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import javax.xml.rpc.ServiceException;
-
 
 @WebServlet("/CambiarEstadoDistribucion")
 public class CambiarEstadoDistribucion extends HttpServlet {
@@ -73,7 +29,7 @@ public class CambiarEstadoDistribucion extends HttpServlet {
     }
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //String email = (String) request.getSession().getAttribute("useremail");
+        String email = (String) request.getSession().getAttribute("useremail");
         ControladorPublishService cps = new ControladorPublishServiceLocator();
         ControladorPublish port = null;
 
@@ -81,6 +37,11 @@ public class CambiarEstadoDistribucion extends HttpServlet {
             port = cps.getControladorPublishPort();
             if (port == null) {
                 throw new RuntimeException("No se pudo obtener el puerto del controlador Publish.");
+            }
+            
+            DtRepartidor rep = (DtRepartidor) port.getRepartidor(email);
+            if (rep == null) {
+                throw new RuntimeException("sori");
             }
 
             int[] idDistribuciones = port.listarLasDistribucionesFiltradas(null, null);

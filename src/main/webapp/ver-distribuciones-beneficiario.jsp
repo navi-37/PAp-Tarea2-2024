@@ -75,7 +75,6 @@
                 	ArrayList<String> descripciones = (ArrayList<String>) request.getAttribute("descripciones");
                 	int i = 0;
                    	for (DtDistribucion d : distribuciones){
-                   			//if(d.getBeneficiario().getEmail().equals(session.getAttribute("useremail"))) {
                  	%>
                  	<div class="distribucion-item">
                  	<div class="profile-field">
@@ -124,9 +123,8 @@
 			        </div>
 			        </div>
 			    <% 
-					//}
 			    } 
-			    	%>
+			    %>
         	</div>
         	
         </div>

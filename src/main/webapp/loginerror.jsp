@@ -14,9 +14,21 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+        }
+        .error-message {
+            background-color: #fee2e2;
+            border: 1px solid #f87171;
+            color: #b91c1c;
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
         }
         .login-container {
             background-color: white;
@@ -84,6 +96,9 @@
     </style>
 </head>
 <body>
+    <div class="error-message">
+        Error. Por favor inicie sesión nuevamente.
+    </div>
     <div class="login-container">
         <a href="index.jsp" class="back-button">
             <i class="fas fa-arrow-left"></i> Volver
