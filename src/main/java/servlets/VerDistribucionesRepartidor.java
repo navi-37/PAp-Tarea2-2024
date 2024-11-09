@@ -4,6 +4,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import publicadores.Barrio;
 import publicadores.ControladorPublish;
 import publicadores.ControladorPublishService;
 import publicadores.ControladorPublishServiceLocator;
@@ -36,45 +37,44 @@ public class VerDistribucionesRepartidor extends HttpServlet {
             if (port == null) {
                 throw new RuntimeException("No se pudo obtener el puerto del controlador Publish.");
             }
+            
+            //bloque actualizacion sin redireccion
+            String zonaParam = request.getParameter("zona");
+            Barrio zonaFiltro = null;
+
+            if (zonaParam != null && !zonaParam.isEmpty()) {
+                try {
+                    zonaFiltro = Barrio.fromValue(zonaParam);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Zona no válida: " + zonaParam);
+                }
+            }
+            //
 
             int[] idDistribuciones = port.listarLasDistribucionesFiltradas(EstadoDistribucion.PENDIENTE, null);
             ArrayList<DtDistribucion> distribuciones = new ArrayList<DtDistribucion>();
             ArrayList<String> descripciones = new ArrayList<String>();
             for (int dist : idDistribuciones) {
             	DtDistribucion distribucion = port.getDistribucion(dist);
-            	distribuciones.add(distribucion);
-            	
-            	Integer idDon = distribucion.getDonacion().getId();
-            	
-                DtArticulo articulo = null;
-                DtAlimento alimento = null;
-                
-                try {
-                	alimento = port.getAlimento(idDon);
-				} catch (Exception e) {
-				    alimento = null;
-				}
-                try {
-                	articulo = port.getArticulo(idDon);
-
-				} catch (Exception e) {
-				    articulo = null; 
-				}
- 
-            	if (alimento != null) { // si es un alimento
-            		String descripcion = alimento.getDescripcionProductos();
-            		descripciones.add(descripcion);
-            	} else if (articulo != null) { // si es un artículo
-            		String descripcion = articulo.getDescripcion();
-            		descripciones.add(descripcion);
-            	} else {
-            		descripciones.add("Descripción no disponible");
+            	if ((zonaFiltro == null) || distribucion.getBeneficiario().getBarrio().equals(zonaFiltro)) {
+	            	distribuciones.add(distribucion);
+	                Integer idDon = distribucion.getDonacion().getId();
+	                String descripcion = obtenerDescripcionDonacion(idDon, port);
+	                descripciones.add(descripcion);
             	}
             }
             
-            request.setAttribute("distribuciones", distribuciones);
-            request.setAttribute("descripciones", descripciones);
-            request.getRequestDispatcher("/ver-distribuciones-repartidor.jsp").forward(request, response);
+            if (zonaParam != null) {
+                // Si la solicitud es AJAX, devuelve solo el contenido de las distribuciones
+                request.setAttribute("distribuciones", distribuciones);
+                request.setAttribute("descripciones", descripciones);
+                request.getRequestDispatcher("/fragmento-distribuciones.jsp").forward(request, response);
+            } else {
+                // Si no es AJAX, redirige a la página completa
+                request.setAttribute("distribuciones", distribuciones);
+                request.setAttribute("descripciones", descripciones);
+                request.getRequestDispatcher("/ver-distribuciones-repartidor.jsp").forward(request, response);
+            }
         
         } catch (Exception e) {
             e.printStackTrace(); // Imprimir la traza de la excepción en la consola para depuración
@@ -83,11 +83,30 @@ public class VerDistribucionesRepartidor extends HttpServlet {
         }
         
     }
-	 
+	
+    
     public publicadores.DtDistribucion getDistribucion(int arg0) throws java.rmi.RemoteException, ServiceException {
 		ControladorPublishService cps = new ControladorPublishServiceLocator();
 		ControladorPublish port;
 		port = cps.getControladorPublishPort();
 		return (DtDistribucion) port.getDistribucion(arg0);
-	} 
+	}
+	
+    
+ // Función para obtener la descripción de la donación
+    private String obtenerDescripcionDonacion(Integer idDon, ControladorPublish port) {
+        try {
+            DtAlimento alimento = port.getAlimento(idDon);
+            if (alimento != null) {
+                return alimento.getDescripcionProductos();
+            }
+        } catch (Exception e) {}
+        try {
+            DtArticulo articulo = port.getArticulo(idDon);
+            if (articulo != null) {
+                return articulo.getDescripcion();
+            }
+        } catch (Exception e) {}
+        return "Descripción no disponible";
+    }
 }
