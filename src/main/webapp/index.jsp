@@ -10,7 +10,7 @@
 
 <%
 String email = (String) request.getSession().getAttribute("useremail");
-System.out.println(email);
+//System.out.println(email);
 if(email != null){
 	
 	ControladorPublishService cps = new ControladorPublishServiceLocator();
@@ -27,12 +27,12 @@ if(email != null){
         try {
             rep = (DtRepartidor) port.getRepartidor(email);
         } catch (RepartidorNoExisteExc e) {
-            System.out.println("No se encontró un repartidor con el email proporcionado.");
+            //System.out.println("No se encontró un repartidor con el email proporcionado.");
         }
 
         if (rep != null) {
-            System.out.println(rep.getEmail());
-            System.out.println("Usuario identificado como repartidor, redirigiendo a repartidor.jsp");
+            //System.out.println(rep.getEmail());
+            //System.out.println("Usuario identificado como repartidor, redirigiendo a repartidor.jsp");
             response.sendRedirect("repartidor.jsp");
             return;
         }
@@ -41,12 +41,12 @@ if(email != null){
         try {
             ben = (DtBeneficiario) port.getBeneficiario(email);
         } catch (BeneficiarioNoExisteExc e) {
-            System.out.println("No se encontró un repartidor con el email proporcionado.");
+            //System.out.println("No se encontró un repartidor con el email proporcionado.");
         }
 
         if (ben != null) {
-            System.out.println(ben.getEmail());
-            System.out.println("Usuario identificado como beneficiario, redirigiendo a beneficiario.jsp");
+            //System.out.println(ben.getEmail());
+            //System.out.println("Usuario identificado como beneficiario, redirigiendo a beneficiario.jsp");
             response.sendRedirect("beneficiario.jsp");
             return;
         }
