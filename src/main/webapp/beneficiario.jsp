@@ -110,7 +110,6 @@ try {
             <nav>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="/asd/VerDistribucionesBeneficiario" class="nav-link custom-menu-link">Ver distribuciones</a></li>
-					<li class="nav-item"><a href="#" class="nav-link custom-menu-link">Filtrar distribuciones por estado</a></li>
                 </ul>
             </nav>
         </div>

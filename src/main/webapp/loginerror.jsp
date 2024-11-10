@@ -97,7 +97,7 @@
 </head>
 <body>
     <div class="error-message">
-        Error. Por favor inicie sesión nuevamente.
+        Error. Por favor intente nuevamente.
     </div>
     <div class="login-container">
         <a href="index.jsp" class="back-button">

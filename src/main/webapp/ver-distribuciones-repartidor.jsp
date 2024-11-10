@@ -42,7 +42,27 @@
 	        padding: 15px;
 	        margin-bottom: 20px;
         }
+        .form-select {
+            max-width: 250px;
+        }
     </style>
+    <script>
+        // Función que se llama cuando el filtro cambia
+        function filtrarDistribuciones() {
+            const zona = document.getElementById('zonaFiltro').value;
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "VerDistribucionesRepartidor?zona=" + zona, true);
+            xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest"); // Indicar que es una solicitud AJAX
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('listaDistribuciones').innerHTML = xhr.responseText;
+                } else {
+                    alert("Error al cargar las distribuciones.");
+                }
+            };
+            xhr.send();
+        }
+    </script>
 </head>
 <body>
     <header class="custom-header text-white p-4 position-relative d-flex justify-content-between align-items-center">
@@ -67,83 +87,47 @@
     <main class="container mt-4">
         <div class="profile-section">
             <h2 class="mb-4">Distribuciones pendientes:</h2>
-            <div id="profileData">
+            <!-- Dropdown para filtrar por estado -->
+            <div class="mb-3">
+                <label for="zonaFiltro" class="form-label">Filtrar por zona:</label>
+                <select id="zonaFiltro" class="form-select" onchange="filtrarDistribuciones()">
+                    <option value="">Todas</option>	
+                    <option value="CIUDAD_VIEJA">Ciudad vieja</option>
+                    <option value="CORDON">Cordón</option>
+                    <option value="PARQUE_RODO">Parque Rodó</option>
+                    <option value="CENTRO">Centro</option>
+                    <option value="PALERMO">Palermo</option>
+                </select>
+            </div>
+            <div id="listaDistribuciones">
                 <!-- Mostrar los datos del perfil del beneficiario -->
-                
                 <% 
                    	ArrayList<DtDistribucion> distribuciones = (ArrayList<DtDistribucion>) request.getAttribute("distribuciones");
                 	ArrayList<String> descripciones = (ArrayList<String>) request.getAttribute("descripciones");
-                	int i = 0;
-                   	for (DtDistribucion d : distribuciones){	
+                	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                	
+                	if (distribuciones != null) {
+	                	int i = 0;
+	                   	for (DtDistribucion d : distribuciones) {	
+                   		
                  	%>
+                 	
                  	<div class="distribucion-item">
-                 	<div class="profile-field">
-                    <div class="profile-label">Id:</div>
-                    <div>
-                    <% 
-                    	out.print(d.getId());
-			        %></div>
-                	</div>
-                <div class="profile-field">
-                    <div class="profile-label">Fecha de preparación:</div>
-                    <div><%
-	                    Calendar fechaPreparacion = d.getFechaPreparacion();
-	                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-	                    String fechaFormateada = sdf.format(fechaPreparacion.getTime());
-	                    out.print(fechaFormateada);
-			        %></div>
+                    <p><strong>Id de distribución:</strong> <%= d.getId() %></p>
+                    <p><strong>Fecha de preparación:</strong> <%= sdf.format(d.getFechaPreparacion().getTime()) %></p>
+                    <p><strong>Fecha de entrega:</strong> <%= sdf.format(d.getFechaEntrega().getTime()) %></p>
+                    <p><strong>Estado:</strong> <%= d.getEstado() %></p>
+                    <p><strong>Id de donación asociada:</strong> <%= d.getDonacion().getId() %></p>
+                    <p><strong>Descripción de la donación:</strong> <%= descripciones.get(i) %></p>
                 </div>
-                <div class="profile-field">
-                    <div class="profile-label">Fecha de entrega:</div>
-                    <div><% 
-	                    Calendar fechaEntrega = d.getFechaEntrega();
-	                    SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-	                    String fechaFormateada2 = sdf.format(fechaEntrega.getTime());
-	                    out.print(fechaFormateada2);
-			        %></div>
-            	</div>
-            	<div class="profile-field">
-                    <div class="profile-label">Estado:</div>
-                    <div><% 
-                    	out.print(d.getEstado());
-			        %></div>
-        		</div>
-        		<div class="profile-field">
-                    <div class="profile-label">Email del beneficiario asociado:</div>
-                    <div><% 
-                    	out.print(d.getBeneficiario().getEmail());
-			        %></div>
-        		</div>
-        		<div class="profile-field">
-                    <div class="profile-label">Nombre del beneficiario:</div>
-                    <div><% 
-                    	out.print(d.getBeneficiario().getNombre());
-			        %></div>
-        		</div>
-        		<div class="profile-field">
-                    <div class="profile-label">Barrio del beneficiario:</div>
-                    <div><% 
-                    	out.print(d.getBeneficiario().getBarrio());
-			        %></div>
-        		</div>
-        		<div class="profile-field">
-                    <div class="profile-label">Id de donación asociada:</div>
-                    <div><% 
-	                    out.print(d.getDonacion().getId()); 
-			        %></div>
-			        </div>
-			    <div class="profile-field">
-                    <div class="profile-label">Descripción de la donación:</div>
-                    <div><% 
-	                    out.print(descripciones.get(i));
-                    	i++;
-			        %></div>
-			        </div>
-			        </div>
-			    <% } %>
-        		
+                	<% i++; %>
+                <%  
+                   		}
+                    } else { 
+                %>
+                    <p>No hay distribuciones disponibles.</p>
+                <% } %>
         	</div>
-        	
         </div>
     </main>
 
