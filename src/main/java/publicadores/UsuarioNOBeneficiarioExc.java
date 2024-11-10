@@ -121,6 +121,6 @@ public class UsuarioNOBeneficiarioExc  extends org.apache.axis.AxisFault  implem
      * Writes the exception data to the faultDetails
      */
     public void writeDetails(javax.xml.namespace.QName qname, org.apache.axis.encoding.SerializationContext context) throws java.io.IOException {
-        context.serialize(qname, null, this);
+        //context.serialize(qname, null, this);
     }
 }
